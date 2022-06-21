@@ -1,13 +1,13 @@
 import Ratings from "react-ratings-declarative";
-
-// Display only title and star
-// click event to show notes
+import useCollapse from "react-collapsed";
 
 function SkillCard({ id, title, starRating, callChangeRating, notes }) {
+  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+
   return (
-    <div className="Skill-card" id={id}>
+    <div className="Skill-card" id={id} {...getToggleProps()}>
       <label>{title}</label>
-      <p>{notes}</p>
+      <p {...getCollapseProps()}>{notes}</p>;
       <Ratings
         rating={starRating}
         widgetDimensions="2vw"

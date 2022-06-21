@@ -28,7 +28,15 @@ div.widget-ratings {
   border-width: 0.3vw;
   border-radius: 2vw;
   max-width: 50vw;
+  width: 95vw;
+  justify-content: space-evenly;
 }
 
-.star-div {
+.Skill-card label {
+  font-weight: bold;
+}
+
+.Skill-card p {
+  font-size: 2vh !important;
+  justify-content: flex-start;
 }

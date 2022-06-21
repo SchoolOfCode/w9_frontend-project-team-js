@@ -1,4 +1,6 @@
 import Profile from "../Profile";
+import Skills from "../Skills";
+
 import "./App.css";
 
 const dummyProfile = [
@@ -13,7 +15,14 @@ const dummyProfile = [
 ];
 
 function App() {
-  return <Profile profileDetails={dummyProfile} />;
+  return (
+  <div className="app-container">
+
+      <Profile profileDetails={dummyProfile} />
+      <Skills/>
+  </div>
+
+  )
 }
 
 export default App;

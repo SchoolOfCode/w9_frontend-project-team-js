@@ -1,120 +1,37 @@
-import './index.css'
-import {useState} from 'react'
-import Ratings from 'react-ratings-declarative';
+import "./index.css";
+import { useState } from "react";
+import DisplaySkills from "./DisplaySkills";
 
+// DisplaySkills component map
+const dummySkills = [
+  {
+    skillId: 1,
+    title: "JavaScript",
+    star: 4,
+    notes: "I be getting good at this",
+  },
+  {
+    skillId: 2,
+    title: "CSS",
+    star: 1,
+    notes: "I be getting bad at this",
+  },
+  {
+    skillId: 3,
+    title: "node.js",
+    star: 2,
+    notes: "I be getting ok at this",
+  },
+];
 
+function Skills() {
+  // const [count, setCount] = useState(1);
 
-
-
-
-      
-
-
-function Skills () {
-
-
-
-const [count, setCount] = useState(1);
-    return (
-        <div className='skills-container'>
-            <div className='each-skill'>
-                <label>Skill 1 </label>
-                <Ratings
-        rating={count}
-        widgetDimensions="2vw"
-        widgetSpacings="0vw"
-        changeRating={setCount}
-                           
-      >
-        <Ratings.Widget     widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-      </Ratings>
-            </div>
-
-            <div className='each-skill'>
-                <label>Skill 2 </label>
-                <Ratings
-        rating={count}
-        widgetDimensions="2vw"
-        widgetSpacings="0vw"
-        changeRating={setCount}
-                           
-      >
-        <Ratings.Widget     widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-      </Ratings>
-            </div>
-
-            <div className='each-skill'>
-                <label>Skill 3 </label>
-                <Ratings
-        rating={count}
-        widgetDimensions="2vw"
-        widgetSpacings="0vw"
-        changeRating={setCount}
-                           
-      >
-        <Ratings.Widget     widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-      </Ratings>
-            </div>
-
-            <div className='each-skill'>
-                <label>Skill 4</label>
-                <div className="star-div">
-
-                <Ratings
-        rating={count}
-        widgetDimensions="2vw"
-        widgetSpacings="0vw"
-        changeRating={setCount}
-                           
-      >
-        <Ratings.Widget     widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-      </Ratings>
-
-                </div>
-            </div>
-
-            <div className='each-skill'>
-                <label>Skill 5 </label>
-                <Ratings
-        rating={count}
-        widgetDimensions="2vw"
-        widgetSpacings="0vw"
-        changeRating={setCount}
-                           
-      >
-        <Ratings.Widget     widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow" />
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget   widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-        <Ratings.Widget  widgetRatedColor="yellow" widgetHoverColor="yellow"/>
-      </Ratings>
-            </div>
-
-
-        </div>
-    )
-
-
-
-
-
-
+  return (
+    <div className="skills-container">
+      <DisplaySkills arr={dummySkills} />
+    </div>
+  );
 }
 
-export default Skills
+export default Skills;

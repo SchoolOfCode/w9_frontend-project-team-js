@@ -6,6 +6,7 @@ const Goal = ({ goal, handleToggle }) => {
     handleToggle(e.currentTarget.id);
   };
 
+  console.log(goal);
   return (
     <div
       id={goal.goalId}

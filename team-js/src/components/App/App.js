@@ -1,23 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
 
 import GoalCard from "../GoalsCard";
 
-import { useEffect, useState } from "react";
-
 import "./App.css";
-
-const dummyProfile = [
-  {
-    userName: "Adam",
-    bio: "Bootcamper no.1455",
-    imageSrc:
-      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/therock-253954517-279993034023432-628278073878740852-n-1636731864.jpg",
-    help: ["css", "html", "react"],
-    improve: ["node.js", "postgres"],
-  },
-];
 
 const goals = [
   { goalId: 1, details: "get better at react", complete: true },
@@ -26,6 +13,7 @@ const goals = [
 ];
 
 function App() {
+  // Start of Goals
   const [goalList, setGoalList] = useState(goals);
 
   // Toggle function to allow strike through of completed tasks
@@ -56,9 +44,9 @@ function App() {
     ];
     setGoalList(copy);
   };
+  // End of Goals
 
-  //console.log(`app is running ok`);
-  //console.log(goalList);
+  // Start of Users and Skills
 
   const [user, setUser] = useState();
   const [skills, setSkills] = useState();
@@ -87,11 +75,13 @@ function App() {
   if (!user || !skills) {
     return <div>Server Pending</div>;
   }
+  // End of Users and Skills
+
   return (
     <div className="app-container">
       <Profile profileDetails={user} />
       <Skills skillsList={skills} />
-        <GoalCard
+      <GoalCard
         goallist={goalList}
         handleToggle={handleToggle}
         handleFilter={handleFilter}

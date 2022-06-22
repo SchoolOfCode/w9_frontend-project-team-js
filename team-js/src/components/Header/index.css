@@ -5,6 +5,8 @@
    font-family: 'Pacifico', cursive;
    display: flex;
    align-items: center;
+   flex-wrap: wrap;
+   align-content: space-between;
    flex-direction: row;
    font-size: 4vh;
    margin-bottom: 7vh;
@@ -13,8 +15,18 @@
    background-color: #FFCB47;
    border: none;
    width: 100vw;
+  
 
 }
+/* .menu-div {
+    align-self: flex-start;
+}
+
+.header1>*:first-child {
+    flex-direction: row;
+    align-self: flex-start;
+   
+} */
 
 .logo{
     min-height: 5vh;
@@ -23,3 +35,25 @@
     max-height: 20vh;
     max-width: 20vw;
 }
+
+.bm-overlay {
+    position: absolute !important;
+    width: 20rem !important;
+    /* background:  !important; */
+ 
+  }
+  
+  .bm-burger-button {
+    position: absolute;
+    left: 2rem;
+    top: 4rem;
+    z-index: 1;
+    width: 4rem;
+    height: 4rem;
+    margin: 0rem;
+    padding: 0rem;
+    font-size: 0px;
+    background: transparent;
+    cursor: pointer;
+  }
+  

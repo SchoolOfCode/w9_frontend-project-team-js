@@ -1,5 +1,6 @@
 import Profile from "../Profile";
 import Skills from "../Skills";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 
@@ -15,14 +16,27 @@ const dummyProfile = [
 ];
 
 function App() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/user");
+      const data = await response.json();
+      setUser(data);
+    }
+    fetchData();
+    console.log("This is the user data: " + user);
+  }, []);
+
+  if (!user) {
+    return <div>Server Pending</div>;
+  }
   return (
-  <div className="app-container">
-
-      <Profile profileDetails={dummyProfile} />
-      <Skills/>
-  </div>
-
-  )
+    <div className="app-container">
+      <Profile profileDetails={user} />
+      <Skills />
+    </div>
+  );
 }
 
 export default App;

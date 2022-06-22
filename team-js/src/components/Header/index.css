@@ -17,8 +17,9 @@
 }
 
 .logo{
-    min-height: 10vh;
-    min-width: 10vw;
-    height: 20vh;
-    width: 20vh;
+    min-height: 5vh;
+    min-width: 5vw;
+    
+    max-height: 20vh;
+    max-width: 20vw;
 }

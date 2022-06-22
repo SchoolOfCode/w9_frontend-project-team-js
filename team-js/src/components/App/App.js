@@ -2,6 +2,8 @@ import Profile from "../Profile";
 import Skills from "../Skills";
 import { useEffect, useState } from "react";
 import Header from "../Header";
+import Hamburger from '../Hamburger/index.js'
+import { slide as Menu } from 'react-burger-menu'
 
 import "./App.css";
 
@@ -19,6 +21,8 @@ const dummyProfile = [
 function App() {
   const [user, setUser] = useState();
   const [skills, setSkills] = useState();
+
+  
 
   useEffect(() => {
     async function fetchUserData() {
@@ -44,9 +48,18 @@ function App() {
   if (!user || !skills) {
     return <div>Server Pending</div>;
   }
+
+  
   return (
     <div>
-    <header>
+    
+    <header className='Header-top'>
+    <Menu customBurgerIcon={ <img src="https://img.icons8.com/external-justicon-lineal-color-justicon/344/external-pencil-case-back-to-school-justicon-lineal-color-justicon.png"/> }>
+        <a id="home" className="menu-item" href="/">Home</a>
+        <a id="about" className="menu-item" href="/about">About</a>
+        <a id="contact" className="menu-item" href="/contact">Contact</a>
+
+      </Menu>
     <Header />
     </header>
     <div className="app-container">

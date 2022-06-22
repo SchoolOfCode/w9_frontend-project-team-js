@@ -11,3 +11,14 @@
   
 
 }
+
+.strike {
+  text-decoration: line-through;
+  color: #F45B69
+}
+
+.goal {
+  cursor: pointer;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem
+}

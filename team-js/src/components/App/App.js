@@ -27,14 +27,18 @@ function App() {
   // Toggle function to allow strike through of completed tasks
   const handleToggle = (id) => {
     let mapped = goalList.map((goal) => {
+      console.log(goal.id === Number(id));
+      console.log(typeof(goal.id));
+      console.log(Number(id));
       return goal.id === Number(id)
         ? { ...goal, complete: !goal.complete }
         : { ...goal };
     });
+    console.log(mapped);
     setGoalList(mapped);
   };
-  console.log(`app is running ok`);
-  console.log(goalList);
+  //console.log(`app is running ok`);
+  //console.log(goalList);
   return (
     <div className="app-container">
       <Profile profileDetails={dummyProfile} />

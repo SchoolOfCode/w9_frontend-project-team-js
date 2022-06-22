@@ -82,21 +82,32 @@ function App() {
 
   // Start of toggle feature
 
+  function toggleClick() {
+    const copy = {
+      ...show,
+      showGoal: !show.showGoal,
+      showSkills: !show.showSkills,
+    };
+    setShow(copy);
+  }
+
   return (
     <div className="app-container">
       <Profile profileDetails={user} />
-
-      {show.showSkills ? (
-        <Skills skillsList={skills} />
-      ) : (
-        <GoalCard
-          goallist={goalList}
-          handleToggle={handleToggle}
-          handleFilter={handleFilter}
-          addGoal={addGoal}
-          buttonText={`Lets f do this!!`}
-        />
-      )}
+      <div className="container-card">
+        <button onClick={toggleClick}>Toggle me</button>
+        {show.showSkills ? (
+          <Skills skillsList={skills} />
+        ) : (
+          <GoalCard
+            goallist={goalList}
+            handleToggle={handleToggle}
+            handleFilter={handleFilter}
+            addGoal={addGoal}
+            buttonText={`Lets f do this!!`}
+          />
+        )}
+      </div>
     </div>
   );
 }

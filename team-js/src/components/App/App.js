@@ -27,23 +27,45 @@ function App() {
   // Toggle function to allow strike through of completed tasks
   const handleToggle = (id) => {
     let mapped = goalList.map((goal) => {
-      console.log(goal.goalId === Number(id));
-      console.log(goal.goalId);
-      console.log(Number(id));
       return goal.goalId === Number(id)
         ? { ...goal, complete: !goal.complete }
         : { ...goal };
     });
-    console.log(mapped);
     setGoalList(mapped);
   };
+
+  // Handle Filter Function used for delete button on each ToDo
+  const handleFilter = () => {
+    let filtered = goalList.filter((goal) => {
+      return !goal.complete;
+    });
+    setGoalList(filtered);
+  };
+
+  // Add task function to be called on button click
+  const addGoal = (userInput) => {
+    console.log(goalList);
+    let copy = [...goalList];
+    copy = [
+      ...copy,
+      { goalId: goalList.length + 1, details: userInput, complete: false },
+    ];
+    setGoalList(copy);
+  };
+
   //console.log(`app is running ok`);
   //console.log(goalList);
   return (
     <div className="app-container">
       <Profile profileDetails={dummyProfile} />
       {/* <Skills/> */}
-      <GoalCard goallist={goalList} handleToggle={handleToggle} />
+      <GoalCard
+        goallist={goalList}
+        handleToggle={handleToggle}
+        handleFilter={handleFilter}
+        addGoal={addGoal}
+        buttonText={`Lets f do this!!`}
+      />
     </div>
   );
 }

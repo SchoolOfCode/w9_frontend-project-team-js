@@ -3,7 +3,7 @@ import React from "react";
 const Goal = ({ goal, handleToggle }) => {
   const handleClick = (e) => {
     // console.log(e.currentTarget.id);
-    e.preventDefault();
+    // e.preventDefault();
     handleToggle(e.currentTarget.id);
   };
 
@@ -11,8 +11,9 @@ const Goal = ({ goal, handleToggle }) => {
   return (
     <div
       id={goal.goalId}
+      key={goal.goalId}
       onClick={handleClick}
-      className={goal.complete ? "strike goal" : "goal completed"}
+      className={goal.complete ? "strike goal" : "goal"}
     >
       {goal.details}
     </div>

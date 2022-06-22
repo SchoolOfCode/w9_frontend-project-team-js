@@ -1,0 +1,16 @@
+.skills-container {
+    font-size: 1.5vw;
+    width: 75vw;
+    height: 75vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #9ac2c9;
+    border-style: solid;
+    border-color: #50777e;
+    border-width: 0.3vw;
+    border-radius: 2vw;
+    margin-left: 10vw;
+
+}

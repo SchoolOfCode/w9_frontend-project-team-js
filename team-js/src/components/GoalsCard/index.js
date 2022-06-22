@@ -6,7 +6,7 @@ const GoalCard = ({ goallist, handleToggle, handleFilter }) => {
   console.log(`im logging over here`);
   console.log(goallist);
   return (
-    <div>
+    <div className="skills-container">
       <div>
         {goallist.map((goal) => {
           return <Goal goal={goal} handleToggle={handleToggle} />;

@@ -53,7 +53,6 @@ function App() {
 
   const [user, setUser] = useState();
   const [skills, setSkills] = useState();
-
   useEffect(() => {
     async function fetchUserData() {
       const response = await fetch("/user");
@@ -78,6 +77,16 @@ function App() {
   if (!user || !skills) {
     return <div>Server Pending</div>;
   }
+  console.log(skills);
+  function addSkill(userInput) {
+    let copy = [...skills.payload];
+    copy = [
+      ...copy,
+      { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
+    ];
+    setSkills({ success: true, payload: copy });
+  }
+
   // End of Users and Skills
 
   // Start of toggle feature
@@ -97,7 +106,11 @@ function App() {
       <div className="container-card">
         <button onClick={toggleClick}>Toggle me</button>
         {show.showSkills ? (
-          <Skills skillsList={skills} />
+          <Skills
+            skillsList={skills}
+            buttonText={"Add new skill"}
+            addSkill={addSkill}
+          />
         ) : (
           <GoalCard
             goallist={goalList}

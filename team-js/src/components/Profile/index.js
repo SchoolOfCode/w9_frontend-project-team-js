@@ -7,7 +7,7 @@ function Profile({ profileDetails }) {
     <div className="profile-container">
       <div className="profile-pic">
         <img
-          src={profileDetails[0].imageSrc}
+          src={profileDetails.payload[0].imagesrc}
           alt="user"
           className="profile-image"
         />
@@ -16,22 +16,22 @@ function Profile({ profileDetails }) {
       <div className="info-area">
         <div className="info-area-box">
           <label>Username</label>
-          <p>{profileDetails[0].userName} </p>
+          <p>{profileDetails.payload[0].name} </p>
         </div>
 
         <div className="info-area-box">
           <label>Bio</label>
-          <p>{profileDetails[0].bio}</p>
+          <p>{profileDetails.payload[0].bio}</p>
         </div>
 
         <div className="info-area-box">
           <label>I want to help with</label>
-          <p>{profileDetails[0].help} </p>
+          <p>{profileDetails.payload[0].skillsgood} </p>
         </div>
 
         <div className="info-area-box">
           <label>I want to improve</label>
-          <p>{profileDetails[0].improve} </p>
+          <p>{profileDetails.payload[0].skillsbad} </p>
         </div>
       </div>
     </div>

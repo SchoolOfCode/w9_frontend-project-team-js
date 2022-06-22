@@ -12,7 +12,10 @@ const goals = [
   { goalId: 3, details: "get better at all of it", complete: false },
 ];
 
+const toggle = { showGoal: false, showSkills: true };
+
 function App() {
+  const [show, setShow] = useState(toggle);
   // Start of Goals
   const [goalList, setGoalList] = useState(goals);
 
@@ -50,7 +53,6 @@ function App() {
 
   const [user, setUser] = useState();
   const [skills, setSkills] = useState();
-
   useEffect(() => {
     async function fetchUserData() {
       const response = await fetch("/user");
@@ -75,19 +77,50 @@ function App() {
   if (!user || !skills) {
     return <div>Server Pending</div>;
   }
+  console.log(skills);
+  function addSkill(userInput) {
+    let copy = [...skills.payload];
+    copy = [
+      ...copy,
+      { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
+    ];
+    setSkills({ success: true, payload: copy });
+  }
+
   // End of Users and Skills
+
+  // Start of toggle feature
+
+  function toggleClick() {
+    const copy = {
+      ...show,
+      showGoal: !show.showGoal,
+      showSkills: !show.showSkills,
+    };
+    setShow(copy);
+  }
 
   return (
     <div className="app-container">
       <Profile profileDetails={user} />
-      <Skills skillsList={skills} />
-      <GoalCard
-        goallist={goalList}
-        handleToggle={handleToggle}
-        handleFilter={handleFilter}
-        addGoal={addGoal}
-        buttonText={`Lets f do this!!`}
-      />
+      <div className="container-card">
+        <button onClick={toggleClick}>Toggle me</button>
+        {show.showSkills ? (
+          <Skills
+            skillsList={skills}
+            buttonText={"Add new skill"}
+            addSkill={addSkill}
+          />
+        ) : (
+          <GoalCard
+            goallist={goalList}
+            handleToggle={handleToggle}
+            handleFilter={handleFilter}
+            addGoal={addGoal}
+            buttonText={`Lets f do this!!`}
+          />
+        )}
+      </div>
     </div>
   );
 }

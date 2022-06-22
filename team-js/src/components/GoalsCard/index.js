@@ -13,7 +13,7 @@ const GoalCard = ({
   console.log(`im logging over here`);
   console.log(goallist);
   return (
-    <div className="skills-container">
+    <div className="skills-containers">
       <div className="goal-input">
         <Input addGoal={addGoal} buttonText={buttonText} />
       </div>

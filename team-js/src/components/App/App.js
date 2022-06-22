@@ -12,7 +12,10 @@ const goals = [
   { goalId: 3, details: "get better at all of it", complete: false },
 ];
 
+const toggle = { showGoal: false, showSkills: true };
+
 function App() {
+  const [show, setShow] = useState(toggle);
   // Start of Goals
   const [goalList, setGoalList] = useState(goals);
 
@@ -77,17 +80,23 @@ function App() {
   }
   // End of Users and Skills
 
+  // Start of toggle feature
+
   return (
     <div className="app-container">
       <Profile profileDetails={user} />
-      <Skills skillsList={skills} />
-      <GoalCard
-        goallist={goalList}
-        handleToggle={handleToggle}
-        handleFilter={handleFilter}
-        addGoal={addGoal}
-        buttonText={`Lets f do this!!`}
-      />
+
+      {show.showSkills ? (
+        <Skills skillsList={skills} />
+      ) : (
+        <GoalCard
+          goallist={goalList}
+          handleToggle={handleToggle}
+          handleFilter={handleFilter}
+          addGoal={addGoal}
+          buttonText={`Lets f do this!!`}
+        />
+      )}
     </div>
   );
 }

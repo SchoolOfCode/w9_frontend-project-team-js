@@ -104,7 +104,9 @@ function App() {
     <div className="app-container">
       <Profile profileDetails={user} />
       <div className="container-card">
-        <button onClick={toggleClick}>Toggle me</button>
+        <button className="toggle-button" onClick={toggleClick}>
+          Toggle me
+        </button>
         {show.showSkills ? (
           <Skills
             skillsList={skills}

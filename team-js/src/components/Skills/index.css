@@ -29,7 +29,7 @@ div.widget-ratings {
   border-radius: 2vw;
   max-width: 50vw;
   width: 95vw;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .Skill-card label {

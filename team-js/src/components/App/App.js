@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
+
 import GoalCard from "../GoalsCard";
+
+import { useEffect, useState } from "react";
+
 import "./App.css";
 
 const dummyProfile = [
@@ -55,11 +59,39 @@ function App() {
 
   //console.log(`app is running ok`);
   //console.log(goalList);
+
+  const [user, setUser] = useState();
+  const [skills, setSkills] = useState();
+
+  useEffect(() => {
+    async function fetchUserData() {
+      const response = await fetch("/user");
+      const data = await response.json();
+      setUser(data);
+    }
+    fetchUserData();
+    console.log("This is the user data: " + user);
+  }, []);
+
+  useEffect(() => {
+    async function fetchSkillsData() {
+      const response = await fetch("/skills");
+      const data = await response.json();
+      setSkills(data);
+    }
+    fetchSkillsData();
+
+    console.log("This is the skills data: " + skills);
+  }, []);
+
+  if (!user || !skills) {
+    return <div>Server Pending</div>;
+  }
   return (
     <div className="app-container">
-      <Profile profileDetails={dummyProfile} />
-      {/* <Skills/> */}
-      <GoalCard
+      <Profile profileDetails={user} />
+      <Skills skillsList={skills} />
+        <GoalCard
         goallist={goalList}
         handleToggle={handleToggle}
         handleFilter={handleFilter}

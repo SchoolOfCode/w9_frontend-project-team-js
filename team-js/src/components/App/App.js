@@ -17,24 +17,36 @@ const dummyProfile = [
 
 function App() {
   const [user, setUser] = useState();
+  const [skills, setSkills] = useState();
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchUserData() {
       const response = await fetch("/user");
       const data = await response.json();
       setUser(data);
     }
-    fetchData();
+    fetchUserData();
     console.log("This is the user data: " + user);
   }, []);
 
-  if (!user) {
+  useEffect(() => {
+    async function fetchSkillsData() {
+      const response = await fetch("/skills");
+      const data = await response.json();
+      setSkills(data);
+    }
+    fetchSkillsData();
+
+    console.log("This is the skills data: " + skills);
+  }, []);
+
+  if (!user || !skills) {
     return <div>Server Pending</div>;
   }
   return (
     <div className="app-container">
       <Profile profileDetails={user} />
-      <Skills />
+      <Skills skillsList={skills} />
     </div>
   );
 }

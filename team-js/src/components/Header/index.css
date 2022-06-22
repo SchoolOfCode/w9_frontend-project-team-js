@@ -1,3 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .header1 {
-    
+   font-family: 'Pacifico', cursive;
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   font-size: 4vh;
+   margin-bottom: 7vh;
+   margin-top: -2vh;
+   justify-content: center;
+   background-color: #FFCB47;
+   border: none;
+   width: 100vw;
+
+}
+
+.logo{
+    min-height: 10vh;
+    min-width: 10vw;
+    height: 20vh;
+    width: 20vh;
 }

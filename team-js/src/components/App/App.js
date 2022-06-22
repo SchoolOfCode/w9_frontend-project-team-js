@@ -1,6 +1,7 @@
 import Profile from "../Profile";
 import Skills from "../Skills";
 import { useEffect, useState } from "react";
+import Header from "../Header";
 
 import "./App.css";
 
@@ -44,9 +45,14 @@ function App() {
     return <div>Server Pending</div>;
   }
   return (
+    <div>
+    <header>
+    <Header />
+    </header>
     <div className="app-container">
-      <Profile profileDetails={user} />
-      <Skills skillsList={skills} />
+        <Profile profileDetails={user} />
+        <Skills skillsList={skills} />
+      </div>
     </div>
   );
 }

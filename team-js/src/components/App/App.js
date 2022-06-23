@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
 
-import { useEffect, useState } from "react";
 import Header from "../Header";
-import Hamburger from '../Hamburger/index.js'
-import { slide as Menu } from 'react-burger-menu'
-
+import Hamburger from "../Hamburger/index.js";
+import { slide as Menu } from "react-burger-menu";
 
 import GoalCard from "../GoalsCard";
-
 
 import "./App.css";
 
@@ -61,11 +58,6 @@ function App() {
   const [user, setUser] = useState();
   const [skills, setSkills] = useState();
 
-
-  
-
-
-
   useEffect(() => {
     async function fetchUserData() {
       const response = await fetch("/user");
@@ -76,6 +68,8 @@ function App() {
     console.log("This is the user data: " + user);
   }, []);
 
+  // this will need to be dynamic because new skills or deleted skills will to render
+  // another state and have click event change the state
   useEffect(() => {
     async function fetchSkillsData() {
       const response = await fetch("/skills");
@@ -90,9 +84,6 @@ function App() {
   if (!user || !skills) {
     return <div>Server Pending</div>;
   }
-
-
-  
 
   console.log(skills);
   function addSkill(userInput) {
@@ -117,37 +108,32 @@ function App() {
     setShow(copy);
   }
 
-
   return (
     <div>
-    
-    <header className='Header-top'>
-    <Header />
-    </header>
-    <div className="app-container">
-
+      <header className="Header-top">
+        <Header />
+      </header>
+      <div className="app-container">
         <Profile profileDetails={user} />
-        <Skills skillsList={skills} />
 
-      <Profile profileDetails={user} />
-      <div className="container-card">
-        <button onClick={toggleClick}>Toggle me</button>
-        {show.showSkills ? (
-          <Skills
-            skillsList={skills}
-            buttonText={"Add new skill"}
-            addSkill={addSkill}
-          />
-        ) : (
-          <GoalCard
-            goallist={goalList}
-            handleToggle={handleToggle}
-            handleFilter={handleFilter}
-            addGoal={addGoal}
-            buttonText={`Lets f do this!!`}
-          />
-        )}
-
+        <div className="container-card">
+          <button onClick={toggleClick}>Toggle me</button>
+          {show.showSkills ? (
+            <Skills
+              skillsList={skills}
+              buttonText={"Add new skill"}
+              addSkill={addSkill}
+            />
+          ) : (
+            <GoalCard
+              goallist={goalList}
+              handleToggle={handleToggle}
+              handleFilter={handleFilter}
+              addGoal={addGoal}
+              buttonText={`Lets f do this!!`}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

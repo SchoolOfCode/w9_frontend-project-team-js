@@ -22,23 +22,64 @@ function App() {
   const [show, setShow] = useState(toggle);
   // Start of Goals
   const [goalList, setGoalList] = useState([]);
+  const [copyGoalList, setCopyGoalList] = useState([]);
+
+  // Put request handler
+  async function updateGoal(goal) {
+    const updateId = goal.goalid;
+    const url = "/goals/" + updateId;
+    console.log(goal);
+    await fetch(url, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        details: goal.details,
+        complete: !goal.complete,
+        notes: goal.notes,
+      }),
+    });
+  }
 
   // Toggle function to allow strike through of completed tasks
   const handleToggle = (id) => {
     let mapped = goalList.map((goal) => {
       console.log(id);
-      return goal.goalid === Number(id)
-        ? { ...goal, complete: !goal.complete }
-        : { ...goal };
+      if (goal.goalid === Number(id)) {
+        updateGoal(goal);
+        return { ...goal, complete: !goal.complete };
+      } else {
+        return { ...goal };
+      }
     });
     setGoalList(mapped);
   };
+
+  // DELETE Request for completed items
+
+  async function deleteCompletedGoals(goals) {
+    for (let i = 0; i < goals.length; i++) {
+      const updateId = goals[i].goalid;
+      const url = "/goals/" + updateId;
+      await fetch(url, {
+        method: "DELETE",
+      });
+    }
+  }
 
   // Handle Filter Function used for delete button on each ToDo
   const handleFilter = () => {
     let filtered = goalList.filter((goal) => {
       return !goal.complete;
     });
+
+    let deleted = goalList.filter((goal) => {
+      return goal.complete;
+    });
+    console.log(deleted);
+    deleteCompletedGoals(deleted);
     setGoalList(filtered);
   };
 
@@ -64,14 +105,16 @@ function App() {
   const addGoal = async (userInput) => {
     let copy = [...goalList];
     let newGoal = {
-      goalid: goalList.length + 1,
+      //goalid: goalList.length + 1,
       details: userInput,
       complete: false,
       notes: "",
     };
     copy = [...copy, newGoal];
     setGoalList(copy);
+    setCopyGoalList(copy);
     await postNewGoal(newGoal);
+    console.log(goalList);
   };
 
   useEffect(() => {
@@ -83,7 +126,7 @@ function App() {
     }
     fetchGoalData();
     console.log("This is the goal data: " + user);
-  }, []);
+  }, [copyGoalList]);
 
   // End of Goals
 

@@ -11,6 +11,12 @@ function SkillCard({
 }) {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
 
+  // line 29 was like this
+  // changeRating={function () {
+  //   callChangeRating();
+  //   onClick(id);
+  // }}
+
   return (
     <div className="Skill-card" id={id} {...getToggleProps()}>
       <label>{title}</label>

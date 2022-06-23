@@ -21,12 +21,13 @@ const toggle = { showGoal: false, showSkills: true };
 function App() {
   const [show, setShow] = useState(toggle);
   // Start of Goals
-  const [goalList, setGoalList] = useState(goals);
+  const [goalList, setGoalList] = useState([]);
 
   // Toggle function to allow strike through of completed tasks
   const handleToggle = (id) => {
     let mapped = goalList.map((goal) => {
-      return goal.goalId === Number(id)
+      console.log(id);
+      return goal.goalid === Number(id)
         ? { ...goal, complete: !goal.complete }
         : { ...goal };
     });
@@ -42,15 +43,46 @@ function App() {
   };
 
   // Add task function to be called on button click
-  const addGoal = (userInput) => {
+  // async function postNewGoal(goal) {
+  //   const url = "/goals/";
+  //   fetch(url, {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       details: goal.details,
+  //       complete: false,
+  //       notes: "",
+  //     }),
+  //   });
+  // }
+
+  const addGoal = async (userInput) => {
     console.log(goalList);
     let copy = [...goalList];
-    copy = [
-      ...copy,
-      { goalId: goalList.length + 1, details: userInput, complete: false },
-    ];
+    let newGoal = {
+      goalid: goalList.length + 1,
+      details: userInput,
+      complete: false,
+    };
+    copy = [...copy, newGoal];
     setGoalList(copy);
+    // await postNewGoal(newGoal);
   };
+
+  useEffect(() => {
+    async function fetchGoalData() {
+      const response = await fetch("/goals");
+      const data = await response.json();
+      console.log(data.payload);
+      setGoalList(data.payload);
+    }
+    fetchGoalData();
+    console.log("This is the goal data: " + user);
+  }, []);
+
   // End of Goals
 
   // Start of Users and Skills
@@ -85,7 +117,7 @@ function App() {
     return <div>Server Pending</div>;
   }
 
-  console.log(skills);
+  // console.log(skills);
   function addSkill(userInput) {
     let copy = [...skills.payload];
     copy = [

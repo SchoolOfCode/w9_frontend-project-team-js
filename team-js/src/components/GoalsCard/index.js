@@ -10,8 +10,8 @@ const GoalCard = ({
   addGoal,
   buttonText,
 }) => {
-  console.log(`im logging over here`);
-  console.log(goallist);
+  // console.log(`im logging over here`);
+  // console.log(goallist);
   return (
     <div className="skills-containers">
       <div className="goal-input">
@@ -20,7 +20,7 @@ const GoalCard = ({
       <div>
         {goallist.map((goal) => {
           return (
-            <Goal goal={goal} handleToggle={handleToggle} key={goal.goalId} />
+            <Goal goal={goal} handleToggle={handleToggle} key={goal.goalid} />
           );
         })}
         <button onClick={handleFilter} style={{ margin: "25px" }}>

@@ -62,8 +62,6 @@ function App() {
   }
 
   const addGoal = async (userInput) => {
-    debugger;
-    console.log(goalList);
     let copy = [...goalList];
     let newGoal = {
       goalid: goalList.length + 1,
@@ -104,6 +102,23 @@ function App() {
     console.log("This is the user data: " + user);
   }, []);
 
+  async function postNewSkill(skill) {
+    const url = "/skills";
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify([
+        {
+          title: skill.title,
+          star: skill.star,
+          notes: skill.notes,
+        },
+      ]),
+    });
+  }
   // this will need to be dynamic because new skills or deleted skills will to render
   // another state and have click event change the state
   useEffect(() => {
@@ -118,13 +133,17 @@ function App() {
   }, []);
 
   // console.log(skills);
-  function addSkill(userInput) {
+  async function addSkill(userInput) {
     let copy = [...skills.payload];
-    copy = [
-      ...copy,
-      { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
-    ];
+    let newSkill = {
+      skillsId: copy.length + 1,
+      title: userInput,
+      star: 0,
+      notes: "",
+    };
+    copy = [...copy, newSkill];
     setSkills({ success: true, payload: copy });
+    await postNewSkill(newSkill);
   }
 
   // End of Users and Skills

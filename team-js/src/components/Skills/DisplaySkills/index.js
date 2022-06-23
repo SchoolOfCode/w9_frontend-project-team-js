@@ -1,9 +1,14 @@
 import SkillCard from "../SkillCard";
+import { useState } from "react";
 
 function DisplaySkills({ arr, callStarFunction }) {
+  const [maxCards, setMaxCards] = useState(false);
+  let reverse = [].concat(arr.payload).reverse();
+  console.log(reverse);
   return (
     <div>
-      {arr.payload.map((item) => (
+    {!maxCards ? (
+    reverse.slice(0, 4).map((item) => (
         <SkillCard
           id={item.skillsid}
           title={item.title}
@@ -11,7 +16,22 @@ function DisplaySkills({ arr, callStarFunction }) {
           callChangeRating={callStarFunction}
           notes={item.notes}
         />
-      ))}
+      ))
+     ):(
+       reverse.map((item) => (
+        <SkillCard
+          id={item.skillsid}
+          title={item.title}
+          starRating={item.star}
+          callChangeRating={callStarFunction}
+          notes={item.notes}
+        />
+      ))
+     )} 
+      
+      {arr.payload.length > 4 && (
+        <button onClick={() => setMaxCards(true)}>See more</button>
+      )}
     </div>
   );
 }

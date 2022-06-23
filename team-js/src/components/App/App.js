@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
-
-import { useEffect, useState } from "react";
 import Header from "../Header";
-import Hamburger from '../Hamburger/index.js'
-import { slide as Menu } from 'react-burger-menu'
-
+import Hamburger from "../Hamburger/index.js";
+import { slide as Menu } from "react-burger-menu";
 
 import GoalCard from "../GoalsCard";
-
 
 import "./App.css";
 
@@ -62,95 +58,83 @@ function App() {
   const [skills, setSkills] = useState();
 
 
-  
-
-
-
-  useEffect(() => {
-    async function fetchUserData() {
-      const response = await fetch("/user");
-      const data = await response.json();
-      setUser(data);
-    }
-    fetchUserData();
-    console.log("This is the user data: " + user);
-  }, []);
-
-  useEffect(() => {
-    async function fetchSkillsData() {
-      const response = await fetch("/skills");
-      const data = await response.json();
-      setSkills(data);
-    }
-    fetchSkillsData();
-
-    console.log("This is the skills data: " + skills);
-  }, []);
-
-  if (!user || !skills) {
-    return <div>Server Pending</div>;
+useEffect(() => {
+  async function fetchUserData() {
+    const response = await fetch("/user");
+    const data = await response.json();
+    setUser(data);
   }
+  fetchUserData();
+  console.log("This is the user data: " + user);
+}, []);
 
-
-  
-
-  console.log(skills);
-  function addSkill(userInput) {
-    let copy = [...skills.payload];
-    copy = [
-      ...copy,
-      { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
-    ];
-    setSkills({ success: true, payload: copy });
+useEffect(() => {
+  async function fetchSkillsData() {
+    const response = await fetch("/skills");
+    const data = await response.json();
+    setSkills(data);
   }
+  fetchSkillsData();
 
-  // End of Users and Skills
+  console.log("This is the skills data: " + skills);
+}, []);
 
-  // Start of toggle feature
+console.log(skills);
+function addSkill(userInput) {
+  let copy = [...skills.payload];
+  copy = [
+    ...copy,
+    { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
+  ];
+  setSkills({ success: true, payload: copy });
+}
 
-  function toggleClick() {
-    const copy = {
-      ...show,
-      showGoal: !show.showGoal,
-      showSkills: !show.showSkills,
-    };
-    setShow(copy);
-  }
+// End of Users and Skills
 
+// Start of toggle feature
 
+function toggleClick() {
+  const copy = {
+    ...show,
+    showGoal: !show.showGoal,
+    showSkills: !show.showSkills,
+  };
+  setShow(copy);
+}
+
+if (!user || !skills) {
+  return <div>Server Pending</div>;
+} else {
   return (
     <div>
-    
-    <header className='Header-top'>
-    <Header />
-    </header>
-    <div className="app-container">
-
+        <Header />
+      <div className="app-container">
         <Profile profileDetails={user} />
-        <Skills skillsList={skills} />
+      
 
-      <Profile profileDetails={user} />
-      <div className="container-card">
-        <button onClick={toggleClick}>Toggle me</button>
-        {show.showSkills ? (
-          <Skills
-            skillsList={skills}
-            buttonText={"Add new skill"}
-            addSkill={addSkill}
-          />
-        ) : (
-          <GoalCard
-            goallist={goalList}
-            handleToggle={handleToggle}
-            handleFilter={handleFilter}
-            addGoal={addGoal}
-            buttonText={`Lets f do this!!`}
-          />
-        )}
-
+        
+        <div className="container-card">
+          <button onClick={toggleClick}>Toggle me</button>
+          {show.showSkills ? (
+            <Skills
+              skillsList={skills}
+              buttonText={"Add new skill"}
+              addSkill={addSkill}
+            />
+          ) : (
+            <GoalCard
+              goallist={goalList}
+              handleToggle={handleToggle}
+              handleFilter={handleFilter}
+              addGoal={addGoal}
+              buttonText={`Lets f do this!!`}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
+ }
 }
 
 export default App;

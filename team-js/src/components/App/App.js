@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
 
@@ -90,6 +90,7 @@ function App() {
   const [user, setUser] = useState();
   const [skills, setSkills] = useState();
 
+
   useEffect(() => {
     async function fetchUserData() {
       const response = await fetch("/user");
@@ -113,9 +114,7 @@ function App() {
     console.log("This is the skills data: " + skills);
   }, []);
 
-  if (!user || !skills) {
-    return <div>Server Pending</div>;
-  }
+
 
   // console.log(skills);
   function addSkill(userInput) {
@@ -125,28 +124,35 @@ function App() {
       { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
     ];
     setSkills({ success: true, payload: copy });
-  }
 
-  // End of Users and Skills
 
-  // Start of toggle feature
+// End of Users and Skills
 
-  function toggleClick() {
-    const copy = {
-      ...show,
-      showGoal: !show.showGoal,
-      showSkills: !show.showSkills,
-    };
-    setShow(copy);
-  }
+// Start of toggle feature
 
+
+
+
+function toggleClick() {
+  const copy = {
+    ...show,
+    showGoal: !show.showGoal,
+    showSkills: !show.showSkills,
+  };
+  setShow(copy);
+}
+
+if (!user || !skills) {
+  return <div>Server Pending</div>;
+} else {
   return (
     <div>
-      <header className="Header-top">
         <Header />
-      </header>
       <div className="app-container">
         <Profile profileDetails={user} />
+      
+
+        
 
         <div className="container-card">
           <button onClick={toggleClick}>Toggle me</button>
@@ -169,6 +175,7 @@ function App() {
       </div>
     </div>
   );
+ }
 }
 
 export default App;

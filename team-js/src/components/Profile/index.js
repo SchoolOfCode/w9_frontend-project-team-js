@@ -5,13 +5,12 @@ function Profile({ profileDetails }) {
 
   return (
     <div className="profile-container">
-      <div className="profile-pic">
         <img
           src={profileDetails.payload[0].imagesrc}
           alt="user"
           className="profile-image"
         />
-      </div>
+      
 
       <div className="info-area">
         <div className="info-area-box">

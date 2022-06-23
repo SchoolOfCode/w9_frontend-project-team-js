@@ -5,18 +5,14 @@
    font-family: 'Pacifico', cursive;
    display: flex;
    align-items: center;
-   flex-wrap: wrap;
    align-content: space-between;
-   flex-direction: row;
    font-size: 4vh;
-   margin-bottom: 7vh;
-   margin-top: -2vh;
-   justify-content: center;
+   justify-content: space-between;
    background-color: #FFCB47;
-   border: none;
    width: 100vw;
-  
-
+   height: 30vh;
+   padding: 20px;
+    
 }
 /* .menu-div {
     align-self: flex-start;
@@ -27,6 +23,11 @@
     align-self: flex-start;
    
 } */
+
+.logo-container{
+    display: flex;
+    align-items: center;
+}
 
 .logo{
     min-height: 5vh;
@@ -39,21 +40,21 @@
 .bm-overlay {
     position: absolute !important;
     width: 20rem !important;
-    /* background:  !important; */
+    top: 0 !important;
+    left: 0 !important;
+    padding-left: 20px !important;
  
   }
   
   .bm-burger-button {
-    position: absolute;
-    left: 2rem;
-    top: 4rem;
-    z-index: 1;
-    width: 4rem;
-    height: 4rem;
-    margin: 0rem;
-    padding: 0rem;
-    font-size: 0px;
-    background: transparent;
     cursor: pointer;
+    width: 50px !important;
+
+
   }
-  
+
+#react-burger-menu-btn {
+    width: 60px !important;
+    height: calc(30vh + 40px) !important;
+    
+}

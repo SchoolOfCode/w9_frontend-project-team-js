@@ -1,0 +1,13 @@
+
+
+
+.Skill-card {
+display: inline-block;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-evenly;
+margin: 5px;
+padding-top: 5%;
+padding-bottom: 5%;
+background-color: #afd7de;
+}

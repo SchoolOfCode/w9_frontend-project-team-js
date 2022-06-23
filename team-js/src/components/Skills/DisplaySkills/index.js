@@ -1,5 +1,7 @@
 import SkillCard from "../SkillCard";
 import { useState } from "react";
+import './index.css';
+
 
 function DisplaySkills({ arr, callStarFunction }) {
   const [maxCards, setMaxCards] = useState(false);
@@ -9,13 +11,15 @@ function DisplaySkills({ arr, callStarFunction }) {
     <div>
     {!maxCards ? (
     reverse.slice(0, 4).map((item) => (
-        <SkillCard
+    
+        <SkillCard className='skill-card'
           id={item.skillsid}
           title={item.title}
           starRating={item.star}
           callChangeRating={callStarFunction}
           notes={item.notes}
         />
+     
       ))
      ):(
        reverse.map((item) => (

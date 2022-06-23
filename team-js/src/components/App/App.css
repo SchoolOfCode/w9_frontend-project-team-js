@@ -10,13 +10,19 @@
 }
 
 .app-container {
+
+  padding-top: 2%;
   font-family: "Roboto", sans-serif;
   display: flex;
   align-items: row;
+  justify-content: space-evenly;
   border: none;
+  
+ 
 }
 
 body {
+  background-color: #c3b1e465;
   border: none;
 }
 
@@ -34,22 +40,18 @@ head {
 
 
 
-
-
-.container-card {
+.dynamic-container-card {
   font-size: 1.5vw;
-  width: 75vw;
-  height: 75vh;
+  width: 50%;
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  background-color: #9ac2c9;
+  background-color: #b9d8c2;
   border-style: solid;
   border-color: #50777e;
   border-width: 0.3vw;
   border-radius: 2vw;
-  margin-left: 10vw;
 }
 
 .strike {

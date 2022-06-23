@@ -10,9 +10,7 @@
    justify-content: space-between;
    background-color: #FFCB47;
    width: 100vw;
-   height: 30vh;
-   padding: 20px;
-    
+   height: 30vh;    
 }
 /* .menu-div {
     align-self: flex-start;
@@ -38,7 +36,6 @@
 }
 
 .bm-overlay {
-    position: absolute !important;
     width: 20rem !important;
     top: 0 !important;
     left: 0 !important;

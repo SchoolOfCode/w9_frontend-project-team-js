@@ -43,33 +43,35 @@ function App() {
   };
 
   // Add task function to be called on button click
-  // async function postNewGoal(goal) {
-  //   const url = "/goals/";
-  //   fetch(url, {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       details: goal.details,
-  //       complete: false,
-  //       notes: "",
-  //     }),
-  //   });
-  // }
+  async function postNewGoal(goal) {
+    const url = "/goals";
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        details: goal.details,
+        complete: goal.complete,
+        notes: goal.notes,
+      }),
+    });
+  }
 
-  const addGoal = (userInput) => {
+  const addGoal = async (userInput) => {
+    debugger;
     console.log(goalList);
     let copy = [...goalList];
     let newGoal = {
       goalid: goalList.length + 1,
       details: userInput,
       complete: false,
+      notes: "",
     };
     copy = [...copy, newGoal];
     setGoalList(copy);
-    // await postNewGoal(newGoal);
+    await postNewGoal(newGoal);
   };
 
   useEffect(() => {

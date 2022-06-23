@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
 
+import { useEffect, useState } from "react";
+import Header from "../Header";
+import Hamburger from '../Hamburger/index.js'
+import { slide as Menu } from 'react-burger-menu'
+
+
 import GoalCard from "../GoalsCard";
+
 
 import "./App.css";
 
@@ -53,6 +60,12 @@ function App() {
 
   const [user, setUser] = useState();
   const [skills, setSkills] = useState();
+
+
+  
+
+
+
   useEffect(() => {
     async function fetchUserData() {
       const response = await fetch("/user");
@@ -77,6 +90,10 @@ function App() {
   if (!user || !skills) {
     return <div>Server Pending</div>;
   }
+
+
+  
+
   console.log(skills);
   function addSkill(userInput) {
     let copy = [...skills.payload];
@@ -100,8 +117,18 @@ function App() {
     setShow(copy);
   }
 
+
   return (
+    <div>
+    
+    <header className='Header-top'>
+    <Header />
+    </header>
     <div className="app-container">
+
+        <Profile profileDetails={user} />
+        <Skills skillsList={skills} />
+
       <Profile profileDetails={user} />
       <div className="container-card">
         <button onClick={toggleClick}>Toggle me</button>
@@ -120,6 +147,7 @@ function App() {
             buttonText={`Lets f do this!!`}
           />
         )}
+
       </div>
     </div>
   );

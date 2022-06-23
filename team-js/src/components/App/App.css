@@ -1,16 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
 
-* {
+/* * {
   font-family: "Roboto", sans-serif;
-}
+} */
 
 .app-container {
-
+  font-family: "Roboto", sans-serif;
   display: flex;
   align-items: row;
-  
-
+  border: none;
 }
+
+body {
+  border: none;
+}
+
+head {
+  background-color: blue;
+}
+
+.Header-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
 
 .container-card {
   font-size: 1.5vw;
@@ -38,3 +57,4 @@
   margin-top: 0.4rem;
   margin-bottom: 0.4rem
 }
+

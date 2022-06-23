@@ -27,3 +27,34 @@ head {
 }
 
 
+
+
+
+
+.container-card {
+  font-size: 1.5vw;
+  width: 75vw;
+  height: 75vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #9ac2c9;
+  border-style: solid;
+  border-color: #50777e;
+  border-width: 0.3vw;
+  border-radius: 2vw;
+  margin-left: 10vw;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: #F45B69
+}
+
+.goal {
+  cursor: pointer;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem
+}
+

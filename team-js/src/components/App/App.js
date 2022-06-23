@@ -3,8 +3,8 @@ import Profile from "../Profile";
 import Skills from "../Skills";
 
 import Header from "../Header";
-import Hamburger from "../Hamburger/index.js";
-import { slide as Menu } from "react-burger-menu";
+// import Hamburger from "../Hamburger/index.js";
+// import { slide as Menu } from "react-burger-menu";
 
 import GoalCard from "../GoalsCard";
 
@@ -59,7 +59,7 @@ function App() {
   //   });
   // }
 
-  const addGoal = async (userInput) => {
+  const addGoal = (userInput) => {
     console.log(goalList);
     let copy = [...goalList];
     let newGoal = {
@@ -90,7 +90,6 @@ function App() {
   const [user, setUser] = useState();
   const [skills, setSkills] = useState();
 
-
   useEffect(() => {
     async function fetchUserData() {
       const response = await fetch("/user");
@@ -114,8 +113,6 @@ function App() {
     console.log("This is the skills data: " + skills);
   }, []);
 
-
-
   // console.log(skills);
   function addSkill(userInput) {
     let copy = [...skills.payload];
@@ -124,35 +121,32 @@ function App() {
       { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
     ];
     setSkills({ success: true, payload: copy });
+  }
 
+  // End of Users and Skills
 
-// End of Users and Skills
+  // Start of toggle feature
 
-// Start of toggle feature
+  function toggleClick() {
+    const copy = {
+      ...show,
+      showGoal: !show.showGoal,
+      showSkills: !show.showSkills,
+    };
+    setShow(copy);
+  }
 
+  console.log(user);
 
+  if (!user || !skills) {
+    return <div>Server Pending</div>;
+  }
 
-
-function toggleClick() {
-  const copy = {
-    ...show,
-    showGoal: !show.showGoal,
-    showSkills: !show.showSkills,
-  };
-  setShow(copy);
-}
-
-if (!user || !skills) {
-  return <div>Server Pending</div>;
-} else {
   return (
     <div>
-        <Header />
+      <Header />
       <div className="app-container">
         <Profile profileDetails={user} />
-      
-
-        
 
         <div className="container-card">
           <button onClick={toggleClick}>Toggle me</button>
@@ -175,7 +169,6 @@ if (!user || !skills) {
       </div>
     </div>
   );
- }
 }
 
 export default App;

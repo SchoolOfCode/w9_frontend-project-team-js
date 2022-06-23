@@ -23,6 +23,7 @@ function App() {
   // Start of Goals
   const [goalList, setGoalList] = useState([]);
   const [copyGoalList, setCopyGoalList] = useState([]);
+  const [star, setStar] = useState();
 
   // Put request handler
   async function updateGoal(goal) {
@@ -191,6 +192,37 @@ function App() {
 
   // End of Users and Skills
 
+  async function updateStar(skill) {
+    const updateId = skill.skillsId;
+    const url = "/skills/" + updateId;
+    await fetch(url, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: skill.title,
+        star: skill.star,
+        notes: skill.notes,
+      }),
+    });
+  }
+
+  function clickStar(e) {
+    // have id, need to get other info from that id
+    const skill = skills.payload.filter(function (skill) {
+      return Number(skill.skillsid) === Number(e);
+    });
+
+    //change star property from state
+    const updatedSkill = { ...skill[0], star: star };
+    console.log(updatedSkill);
+
+    // call function that will send put request
+    updateStar(skill[0]);
+    // use current star state to update object
+  }
   // Start of toggle feature
 
   function toggleClick() {
@@ -201,8 +233,6 @@ function App() {
     };
     setShow(copy);
   }
-
-  console.log(user);
 
   if (!user || !skills) {
     return <div>Server Pending</div>;
@@ -221,6 +251,8 @@ function App() {
               skillsList={skills}
               buttonText={"Add new skill"}
               addSkill={addSkill}
+              callStarFunction={setStar}
+              onClick={clickStar}
             />
           ) : (
             <GoalCard

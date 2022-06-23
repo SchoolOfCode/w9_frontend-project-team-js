@@ -1,7 +1,14 @@
 import Ratings from "react-ratings-declarative";
 import useCollapse from "react-collapsed";
 
-function SkillCard({ id, title, starRating, callChangeRating, notes }) {
+function SkillCard({
+  id,
+  title,
+  starRating,
+  callChangeRating,
+  notes,
+  onClick,
+}) {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
 
   return (
@@ -13,7 +20,10 @@ function SkillCard({ id, title, starRating, callChangeRating, notes }) {
           rating={starRating}
           widgetDimensions="2vw"
           widgetSpacings="0vw"
-          changeRating={callChangeRating}
+          changeRating={function () {
+            callChangeRating();
+            onClick(id);
+          }}
         >
           <Ratings.Widget widgetRatedColor="yellow" widgetHoverColor="yellow" />
           <Ratings.Widget widgetRatedColor="yellow" widgetHoverColor="yellow" />

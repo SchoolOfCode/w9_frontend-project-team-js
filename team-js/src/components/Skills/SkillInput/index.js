@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './index.css';
 
 function SkillInput({ buttonText, addSkill }) {
   const [userInput, setUserInput] = useState("");
@@ -14,13 +15,13 @@ function SkillInput({ buttonText, addSkill }) {
 
   return (
     <div className="skill-input-add">
-      <input
+      <input className="skill-input-field"
         value={userInput}
         type="text"
         onChange={handleChange}
         placeholder="What skill would you like to track?"
       ></input>
-      <button onClick={handleSubmit}>
+      <button className="button-55" onClick={handleSubmit}>
         {/* {" "} */}
         {buttonText}
       </button>

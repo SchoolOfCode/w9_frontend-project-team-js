@@ -1,5 +1,5 @@
 .info-area p {
-  font-size: 1.25vw;
+  font-size: 60%;
   margin: 0vh;
 }
 .info-area label {
@@ -8,26 +8,24 @@
 
 .profile-container {
   font-size: 1.5vw;
-  width: 25vw;
-  height: 75vh;
+  width: 25%;
+  height: 100%;
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  background-color: #9ac2c9;
+  background-color: #9487acce;
   border-style: solid;
-  border-color: #50777e;
+  border-color: #7a708dce;
   border-width: 0.3vw;
   border-radius: 2vw;
-  max-width: 50vw;
-  margin-left: 10vw;
 }
 
 .profile-image {
   border-style: solid;
-  border-color: #50777e;
+  border-color: #7a708dce;
   border-radius: 50%;
-  width: 70%;
+  width: 30%;
 }
 
 .info-area-box {

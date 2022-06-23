@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
-
 import Header from "../Header";
-// import Hamburger from "../Hamburger/index.js";
-// import { slide as Menu } from "react-burger-menu";
+import Hamburger from "../Hamburger/index.js";
+import { slide as Menu } from "react-burger-menu";
 
 import GoalCard from "../GoalsCard";
 
@@ -21,6 +20,9 @@ const toggle = { showGoal: false, showSkills: true };
 function App() {
   const [show, setShow] = useState(toggle);
   // Start of Goals
+
+ 
+
   const [goalList, setGoalList] = useState([]);
   const [copyGoalList, setCopyGoalList] = useState([]);
 
@@ -43,9 +45,13 @@ function App() {
     });
   }
 
+
   // Toggle function to allow strike through of completed tasks
   const handleToggle = (id) => {
     let mapped = goalList.map((goal) => {
+
+    
+
       console.log(id);
       if (goal.goalid === Number(id)) {
         updateGoal(goal);
@@ -53,6 +59,7 @@ function App() {
       } else {
         return { ...goal };
       }
+
     });
     setGoalList(mapped);
   };
@@ -84,6 +91,8 @@ function App() {
   };
 
   // Add task function to be called on button click
+
+
   async function postNewGoal(goal) {
     const url = "/goals";
     await fetch(url, {
@@ -128,12 +137,14 @@ function App() {
     console.log("This is the goal data: " + user);
   }, [copyGoalList]);
 
+
   // End of Goals
 
   // Start of Users and Skills
 
   const [user, setUser] = useState();
   const [skills, setSkills] = useState();
+
 
   useEffect(() => {
     async function fetchUserData() {
@@ -193,29 +204,64 @@ function App() {
 
   // Start of toggle feature
 
-  function toggleClick() {
-    const copy = {
-      ...show,
-      showGoal: !show.showGoal,
-      showSkills: !show.showSkills,
-    };
-    setShow(copy);
+
+useEffect(() => {
+  async function fetchUserData() {
+    const response = await fetch("/user");
+    const data = await response.json();
+    setUser(data);
   }
+  fetchUserData();
+  console.log("This is the user data: " + user);
+}, []);
 
-  console.log(user);
-
-  if (!user || !skills) {
-    return <div>Server Pending</div>;
+useEffect(() => {
+  async function fetchSkillsData() {
+    const response = await fetch("/skills");
+    const data = await response.json();
+    setSkills(data);
   }
+  fetchSkillsData();
 
+  console.log("This is the skills data: " + skills);
+}, []);
+
+console.log(skills);
+function addSkill(userInput) {
+  let copy = [...skills.payload];
+  copy = [
+    ...copy,
+    { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
+  ];
+  setSkills({ success: true, payload: copy });
+}
+
+// End of Users and Skills
+
+// Start of toggle feature
+
+function toggleClick() {
+  const copy = {
+    ...show,
+    showGoal: !show.showGoal,
+    showSkills: !show.showSkills,
+  };
+  setShow(copy);
+}
+
+if (!user || !skills) {
+  return <div>Server Pending</div>;
+} else {
   return (
     <div>
-      <Header />
+        <Header />
       <div className="app-container">
         <Profile profileDetails={user} />
+      
 
-        <div className="container-card">
-          <button onClick={toggleClick}>Toggle me</button>
+        
+        <div className="dynamic-container-card">
+          <button className="button-54" onClick={toggleClick}>Toggle me</button>
           {show.showSkills ? (
             <Skills
               skillsList={skills}
@@ -228,13 +274,14 @@ function App() {
               handleToggle={handleToggle}
               handleFilter={handleFilter}
               addGoal={addGoal}
-              buttonText={`Lets f do this!!`}
+              buttonText={`Add`}
             />
           )}
         </div>
       </div>
     </div>
   );
+ }
 }
 
 export default App;

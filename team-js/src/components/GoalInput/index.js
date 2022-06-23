@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./index.css";
 
 function Input({ buttonText, addGoal }) {
   const [userInput, setUserInput] = useState("");
@@ -16,14 +17,13 @@ function Input({ buttonText, addGoal }) {
 
   return (
     <div className="input-add">
-      <input
+      <input className="goal-input-field"
         value={userInput}
         type="text"
         onChange={handleChange}
         placeholder="So what needs done?"
       ></input>
       <button onClick={handleSubmit}>
-        {/* {" "} */}
         {buttonText}
       </button>
     </div>

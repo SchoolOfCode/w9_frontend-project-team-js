@@ -15,11 +15,11 @@ function SkillCard({ id, title, starRating, callChangeRating, notes }) {
           widgetSpacings="0vw"
           changeRating={callChangeRating}
         >
-          <Ratings.Widget widgetRatedColor="yellow" widgetHoverColor="yellow" />
-          <Ratings.Widget widgetRatedColor="yellow" widgetHoverColor="yellow" />
-          <Ratings.Widget widgetRatedColor="yellow" widgetHoverColor="yellow" />
-          <Ratings.Widget widgetRatedColor="yellow" widgetHoverColor="yellow" />
-          <Ratings.Widget widgetRatedColor="yellow" widgetHoverColor="yellow" />
+          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
+          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
+          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
+          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
+          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
         </Ratings>
       </div>
     </div>

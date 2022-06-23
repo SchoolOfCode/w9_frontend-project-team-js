@@ -19,8 +19,7 @@
   align-items: row;
   justify-content: space-evenly;
   border: none;
-  
- 
+ flex-wrap: wrap;
 }
 
 body {
@@ -44,7 +43,7 @@ head {
 
 .dynamic-container-card {
   font-size: 1.5vw;
-  width: 50%;
+  min-width: 50%;
   align-items: center;
   justify-content: center;
   display: flex;

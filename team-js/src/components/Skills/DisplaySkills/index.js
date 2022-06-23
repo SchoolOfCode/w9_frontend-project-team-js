@@ -34,7 +34,7 @@ function DisplaySkills({ arr, callStarFunction }) {
      )} 
       
       {arr.payload.length > 4 && (
-        <button onClick={() => setMaxCards(true)}>See more</button>
+        <button className="button-56" onClick={() => setMaxCards(true)}>See more</button>
       )}
     </div>
   );

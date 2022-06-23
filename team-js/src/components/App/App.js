@@ -114,7 +114,7 @@ if (!user || !skills) {
 
         
         <div className="dynamic-container-card">
-          <button onClick={toggleClick}>Toggle me</button>
+          <button className="button-54" onClick={toggleClick}>Toggle me</button>
           {show.showSkills ? (
             <Skills
               skillsList={skills}
@@ -127,7 +127,7 @@ if (!user || !skills) {
               handleToggle={handleToggle}
               handleFilter={handleFilter}
               addGoal={addGoal}
-              buttonText={`Lets f do this!!`}
+              buttonText={`Add`}
             />
           )}
         </div>

@@ -14,16 +14,16 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  background-color: #b9d8c2;
+  background-color: #9487acce;
   border-style: solid;
-  border-color: #50777e;
+  border-color: #7a708dce;
   border-width: 0.3vw;
   border-radius: 2vw;
 }
 
 .profile-image {
   border-style: solid;
-  border-color: #50777e;
+  border-color: #7a708dce;
   border-radius: 50%;
   width: 30%;
 }

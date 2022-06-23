@@ -45,17 +45,19 @@ function App() {
   // Add task function to be called on button click
   async function postNewGoal(goal) {
     const url = "/goals";
-    fetch(url, {
+    await fetch(url, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        details: goal.details,
-        complete: goal.complete,
-        notes: goal.notes,
-      }),
+      body: JSON.stringify([
+        {
+          details: goal.details,
+          complete: goal.complete,
+          notes: goal.notes,
+        },
+      ]),
     });
   }
 

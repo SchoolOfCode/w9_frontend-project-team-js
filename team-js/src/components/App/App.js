@@ -24,6 +24,7 @@ function App() {
   const [goalList, setGoalList] = useState([]);
   const [copyGoalList, setCopyGoalList] = useState([]);
   const [star, setStar] = useState();
+  const [starId, setStarId] = useState();
 
   // Put request handler
   async function updateGoal(goal) {
@@ -209,20 +210,28 @@ function App() {
     });
   }
 
-  function clickStar(e) {
-    // have id, need to get other info from that id
-    const skill = skills.payload.filter(function (skill) {
-      return Number(skill.skillsid) === Number(e);
-    });
+  // useEffect(() => {
+  //   console.log(skills);
+  //   const skill = skills.payload.filter(function (skill) {
+  //     return Number(skill.skillsid) === Number(starId);
+  //   });
+  //   const updatedSkill = { ...skill[0], star: star };
+  //   console.log(updatedSkill);
+  // }, [starId, star]);
 
-    //change star property from state
-    const updatedSkill = { ...skill[0], star: star };
-    console.log(updatedSkill);
+  // function clickStar(e) {
+  //   setStarId(e);
 
-    // call function that will send put request
-    updateStar(skill[0]);
-    // use current star state to update object
-  }
+  //change star property from state
+  // const updatedSkill = { ...skill[0], star: star };
+  // console.log(updatedSkill);
+
+  // call function that will send put request
+  // updateStar(skill[0]);
+  // use current star state to update object
+  // }
+  console.log(star, starId);
+
   // Start of toggle feature
 
   function toggleClick() {
@@ -252,7 +261,6 @@ function App() {
               buttonText={"Add new skill"}
               addSkill={addSkill}
               callStarFunction={setStar}
-              onClick={clickStar}
             />
           ) : (
             <GoalCard

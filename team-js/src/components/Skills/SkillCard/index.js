@@ -20,10 +20,7 @@ function SkillCard({
           rating={starRating}
           widgetDimensions="2vw"
           widgetSpacings="0vw"
-          changeRating={function () {
-            callChangeRating();
-            onClick(id);
-          }}
+          changeRating={callChangeRating}
         >
           <Ratings.Widget widgetRatedColor="yellow" widgetHoverColor="yellow" />
           <Ratings.Widget widgetRatedColor="yellow" widgetHoverColor="yellow" />

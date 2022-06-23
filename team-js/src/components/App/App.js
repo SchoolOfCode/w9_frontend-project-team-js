@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
+
 import Header from "../Header";
 import Hamburger from "../Hamburger/index.js";
 import { slide as Menu } from "react-burger-menu";
@@ -20,12 +21,13 @@ const toggle = { showGoal: false, showSkills: true };
 function App() {
   const [show, setShow] = useState(toggle);
   // Start of Goals
-  const [goalList, setGoalList] = useState(goals);
+  const [goalList, setGoalList] = useState([]);
 
   // Toggle function to allow strike through of completed tasks
   const handleToggle = (id) => {
     let mapped = goalList.map((goal) => {
-      return goal.goalId === Number(id)
+      console.log(id);
+      return goal.goalid === Number(id)
         ? { ...goal, complete: !goal.complete }
         : { ...goal };
     });
@@ -41,15 +43,46 @@ function App() {
   };
 
   // Add task function to be called on button click
-  const addGoal = (userInput) => {
+  // async function postNewGoal(goal) {
+  //   const url = "/goals/";
+  //   fetch(url, {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       details: goal.details,
+  //       complete: false,
+  //       notes: "",
+  //     }),
+  //   });
+  // }
+
+  const addGoal = async (userInput) => {
     console.log(goalList);
     let copy = [...goalList];
-    copy = [
-      ...copy,
-      { goalId: goalList.length + 1, details: userInput, complete: false },
-    ];
+    let newGoal = {
+      goalid: goalList.length + 1,
+      details: userInput,
+      complete: false,
+    };
+    copy = [...copy, newGoal];
     setGoalList(copy);
+    // await postNewGoal(newGoal);
   };
+
+  useEffect(() => {
+    async function fetchGoalData() {
+      const response = await fetch("/goals");
+      const data = await response.json();
+      console.log(data.payload);
+      setGoalList(data.payload);
+    }
+    fetchGoalData();
+    console.log("This is the goal data: " + user);
+  }, []);
+
   // End of Goals
 
   // Start of Users and Skills
@@ -58,40 +91,47 @@ function App() {
   const [skills, setSkills] = useState();
 
 
-useEffect(() => {
-  async function fetchUserData() {
-    const response = await fetch("/user");
-    const data = await response.json();
-    setUser(data);
-  }
-  fetchUserData();
-  console.log("This is the user data: " + user);
-}, []);
+  useEffect(() => {
+    async function fetchUserData() {
+      const response = await fetch("/user");
+      const data = await response.json();
+      setUser(data);
+    }
+    fetchUserData();
+    console.log("This is the user data: " + user);
+  }, []);
 
-useEffect(() => {
-  async function fetchSkillsData() {
-    const response = await fetch("/skills");
-    const data = await response.json();
-    setSkills(data);
-  }
-  fetchSkillsData();
+  // this will need to be dynamic because new skills or deleted skills will to render
+  // another state and have click event change the state
+  useEffect(() => {
+    async function fetchSkillsData() {
+      const response = await fetch("/skills");
+      const data = await response.json();
+      setSkills(data);
+    }
+    fetchSkillsData();
 
-  console.log("This is the skills data: " + skills);
-}, []);
+    console.log("This is the skills data: " + skills);
+  }, []);
 
-console.log(skills);
-function addSkill(userInput) {
-  let copy = [...skills.payload];
-  copy = [
-    ...copy,
-    { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
-  ];
-  setSkills({ success: true, payload: copy });
-}
+
+
+  // console.log(skills);
+  function addSkill(userInput) {
+    let copy = [...skills.payload];
+    copy = [
+      ...copy,
+      { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
+    ];
+    setSkills({ success: true, payload: copy });
+
 
 // End of Users and Skills
 
 // Start of toggle feature
+
+
+
 
 function toggleClick() {
   const copy = {
@@ -113,6 +153,7 @@ if (!user || !skills) {
       
 
         
+
         <div className="container-card">
           <button onClick={toggleClick}>Toggle me</button>
           {show.showSkills ? (

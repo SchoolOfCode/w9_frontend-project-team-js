@@ -135,7 +135,7 @@ function App() {
     }
     fetchGoalData();
     console.log("This is the goal data: " + user);
-  }, [copyGoalList]);
+  }, []);
 
 
   // End of Goals

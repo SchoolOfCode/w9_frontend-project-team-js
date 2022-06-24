@@ -7,8 +7,9 @@
 }
 
 .profile-container {
+  padding: 1%;
   font-size: 1.5vw;
-  width: 25%;
+  width: 20%;
   height: 100%;
   align-items: center;
   justify-content: center;
@@ -25,7 +26,7 @@
   border-style: solid;
   border-color: #7a708dce;
   border-radius: 50%;
-  width: 30%;
+  width: 40%;
 }
 
 .info-area-box {

@@ -15,7 +15,7 @@ function Profile({ profileDetails }) {
       <div className="info-area">
         <div className="info-area-box">
           <label>Username</label>
-          <p>{profileDetails.payload[0].name} </p>
+          <p >{profileDetails.payload[0].name} </p>
         </div>
 
         <div className="info-area-box">

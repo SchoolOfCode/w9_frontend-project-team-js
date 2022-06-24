@@ -34,12 +34,13 @@ function Header() {
       </div>
       <div className="logo-container">
         <img
+          aria-label='Backpack'
           className="logo"
           src={require("../../design-files/backpack.png")}
           alt="Backpack"
-        />
+        ></img>
 
-        <h1 className="header-title">Backpack</h1>
+        <h1 aria-label='page-name' className="header-title">Backpack</h1>
       </div>
       <div></div>
     </header>

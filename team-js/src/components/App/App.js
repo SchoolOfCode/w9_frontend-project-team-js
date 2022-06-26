@@ -271,7 +271,7 @@ function App() {
                 addGoal={addGoal}
                 buttonText={`Add`}
               />
-             ) : show === 'goal2' ?
+             ) :
              ( <GoalCard
                 goallist={goalList}
                 handleToggle={handleToggle}
@@ -280,9 +280,7 @@ function App() {
                 buttonText={`Add this madness!`}
               />
              )
-             : !show (
-             <div>Select a utility</div>
-             )
+            
             }
             
           </div>

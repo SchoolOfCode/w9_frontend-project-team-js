@@ -1,6 +1,5 @@
 import "./index.css";
 import DisplaySkills from "./DisplaySkills";
-import SkillCard from "./SkillCard";
 import SkillInput from "./SkillInput";
 
 function Skills({ skillsList, buttonText, addSkill, callStarFunction }) {

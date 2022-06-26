@@ -6,13 +6,13 @@ import './index.css';
 function DisplaySkills({ arr, callStarFunction }) {
   const [maxCards, setMaxCards] = useState(false);
   let reverse = [].concat(arr.payload).reverse();
-  console.log(reverse);
   return (
     <div>
     {!maxCards ? (
     reverse.slice(0, 4).map((item) => (
     
         <SkillCard className='skill-card'
+          item={item}
           id={item.skillsid}
           title={item.title}
           starRating={item.star}
@@ -24,10 +24,10 @@ function DisplaySkills({ arr, callStarFunction }) {
      ):(
        reverse.map((item) => (
         <SkillCard
+          item={item}
+          starRating={item.star}
           id={item.skillsid}
           title={item.title}
-          starRating={item.star}
-          callChangeRating={callStarFunction}
           notes={item.notes}
         />
       ))

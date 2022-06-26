@@ -10,7 +10,6 @@ function Input({ buttonText, addGoal }) {
 
   const handleSubmit = function () {
     // debugger;
-    console.log(`click click mfS`);
     addGoal(userInput);
     setUserInput("");
   };

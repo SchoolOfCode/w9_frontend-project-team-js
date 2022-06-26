@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
 import Header from "../Header";
-import Hamburger from "../Hamburger/index.js";
-import { slide as Menu } from "react-burger-menu";
 
 import GoalCard from "../GoalsCard";
 
@@ -15,12 +13,12 @@ const goals = [
   { goalId: 3, details: "get better at all of it", complete: false },
 ];
 
-const toggle = { showGoal: false, showSkills: true };
-
 function App() {
-  const [show, setShow] = useState(toggle);
+  const [show, setShow] = useState('skill');
   // Start of Goals
   const [hover, setHover] = useState();
+
+  const [starNumber, setStarNumber] = useState([]);
 
   const [goalList, setGoalList] = useState([]);
   const [copyGoalList, setCopyGoalList] = useState([]);
@@ -29,7 +27,6 @@ function App() {
   async function updateGoal(goal) {
     const updateId = goal.goalid;
     const url = "/goals/" + updateId;
-    console.log(goal);
     await fetch(url, {
       method: "PUT",
       headers: {
@@ -47,7 +44,6 @@ function App() {
   // Toggle function to allow strike through of completed tasks
   const handleToggle = (id) => {
     let mapped = goalList.map((goal) => {
-      console.log(id);
       if (goal.goalid === Number(id)) {
         updateGoal(goal);
         return { ...goal, complete: !goal.complete };
@@ -79,7 +75,6 @@ function App() {
     let deleted = goalList.filter((goal) => {
       return goal.complete;
     });
-    console.log(deleted);
     deleteCompletedGoals(deleted);
     setGoalList(filtered);
   };
@@ -116,18 +111,15 @@ function App() {
     setGoalList(copy);
     setCopyGoalList(copy);
     await postNewGoal(newGoal);
-    console.log(goalList);
   };
 
   useEffect(() => {
     async function fetchGoalData() {
       const response = await fetch("/goals");
       const data = await response.json();
-      console.log(data.payload);
       setGoalList(data.payload);
     }
     fetchGoalData();
-    console.log("This is the goal data: " + user);
   }, []);
 
   // End of Goals
@@ -144,7 +136,6 @@ function App() {
       setUser(data);
     }
     fetchUserData();
-    console.log("This is the user data: " + user);
   }, []);
 
   async function postNewSkill(skill) {
@@ -173,8 +164,6 @@ function App() {
       setSkills(data);
     }
     fetchSkillsData();
-
-    console.log("This is the skills data: " + skills);
   }, []);
 
   // console.log(skills);
@@ -202,7 +191,6 @@ function App() {
       setUser(data);
     }
     fetchUserData();
-    console.log("This is the user data: " + user);
   }, []);
 
   useEffect(() => {
@@ -212,11 +200,8 @@ function App() {
       setSkills(data);
     }
     fetchSkillsData();
-
-    console.log("This is the skills data: " + skills);
   }, []);
 
-  console.log(skills);
   function addSkill(userInput) {
     let copy = [...skills.payload];
     copy = [
@@ -230,15 +215,27 @@ function App() {
 
   // Start of toggle feature
 
-  function toggleClick() {
-    const copy = {
-      ...show,
-      showGoal: !show.showGoal,
-      showSkills: !show.showSkills,
-    };
-    setShow(copy);
+  function toggleClick(value) {
+    switch (value) {
+      case 'goal':
+        setShow('goal');
+        break;
+      case 'skill':
+        setShow('skill');
+        break;
+      case 'goal2':
+        setShow('goal2')
+        break;
+      default:
+        setShow('skill');
+    }
   }
 
+  /*
+  -- If the button is pressed, display the card appropriate
+  -- Using switch, the case would depend on the clicked button
+  -- The first case would be set to Skills
+  */
   if (!user || !skills) {
     return <div>Server Pending</div>;
   } else {
@@ -249,25 +246,45 @@ function App() {
           <Profile profileDetails={user} />
 
           <div className="dynamic-container-card">
-            <button className="button-54" onClick={toggleClick}>
-              Toggle me
+            <button className="button-54" onClick={() => toggleClick('skill')}>
+              Skill
             </button>
-            {show.showSkills ? (
-              <Skills
+            <button className="button-54" onClick={() => toggleClick('goal')}>
+              Goal
+            </button>
+            <button className="button-54" value={'goal2'} onClick={() => toggleClick('goal2')}>
+              Goal2
+            </button>
+
+            { show === 'skill' ? 
+              (<Skills
                 skillsList={skills}
                 buttonText={"Add new skill"}
                 addSkill={addSkill}
                 callStarFunction={setHover}
-              />
-            ) : (
-              <GoalCard
+              />)
+               : show === 'goal' ?
+             ( <GoalCard
                 goallist={goalList}
                 handleToggle={handleToggle}
                 handleFilter={handleFilter}
                 addGoal={addGoal}
                 buttonText={`Add`}
               />
-            )}
+             ) : show === 'goal2' ?
+             ( <GoalCard
+                goallist={goalList}
+                handleToggle={handleToggle}
+                handleFilter={handleFilter}
+                addGoal={addGoal}
+                buttonText={`Add this madness!`}
+              />
+             )
+             : !show (
+             <div>Select a utility</div>
+             )
+            }
+            
           </div>
         </div>
       </div>

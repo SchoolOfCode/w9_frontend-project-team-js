@@ -15,7 +15,7 @@
 
 }
 
-.button-57 {
+.clear-items-btn {
     font-family: "Open Sans", sans-serif;
     font-size: 30%;
     letter-spacing: 2px;
@@ -31,7 +31,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
   }
-  .button-57:active {
+  .clear-items-btn:active {
     box-shadow: 0px 0px 0px 0px;
     top: 5px;
     left: 5px;

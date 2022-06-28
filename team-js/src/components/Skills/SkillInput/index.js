@@ -21,7 +21,7 @@ function SkillInput({ buttonText, addSkill }) {
         onChange={handleChange}
         placeholder="What skill would you like to track?"
       ></input>
-      <button className="button-55" onClick={handleSubmit}>
+      <button className="add-skill-btn" onClick={handleSubmit}>
         {/* {" "} */}
         {buttonText}
       </button>

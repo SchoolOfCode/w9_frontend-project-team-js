@@ -2,18 +2,9 @@ import { useEffect, useState } from "react";
 import Profile from "../Profile";
 import Skills from "../Skills";
 import Header from "../Header";
-import Hamburger from "../Hamburger/index.js";
-import { slide as Menu } from "react-burger-menu";
-
-import GoalCard from "../GoalsCard";
-
+import GoalCard from "../Goals/GoalsCard";
 import "./App.css";
 
-const goals = [
-  { goalId: 1, details: "get better at react", complete: true },
-  { goalId: 2, details: "get better at backend", complete: false },
-  { goalId: 3, details: "get better at all of it", complete: false },
-];
 
 const toggle = { showGoal: false, showSkills: true };
 
@@ -249,7 +240,7 @@ function App() {
           <Profile profileDetails={user} />
 
           <div className="dynamic-container-card">
-            <button className="button-54" onClick={toggleClick}>
+            <button className="toggle-btn" onClick={toggleClick}>
               Toggle me
             </button>
             {show.showSkills ? (

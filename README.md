@@ -84,7 +84,7 @@ The goals compnent rendered on the main page consists of three smaller component
 - GoalItem
 - GoalInput
 
-The GoalItem and GoalInput are both pulled through into the GoalCard, which is then pulled through into app.js. These components are all pure and do not handle state within them.
+The GoalItem and GoalInput are both pulled through into the GoalCard, which is then pulled through into app.js.
 
 ### GoalCard
 
@@ -93,8 +93,8 @@ _props_
 - goallist
 - handleToggle
 - handleFilter
-  - addGoal
-  - buttonText
+- addGoal
+- buttonText
 
 _behaviour_
 
@@ -116,3 +116,19 @@ _behaviour_
 - assigns key and id to the div
 - displays prop goal.details
 - depending on status of goal.complete, applies strike class or not
+
+### GoalInput
+
+_state_
+
+- userInput
+
+_props_
+
+- buttonText
+- addGoal
+
+_behaviour_
+
+- handleChange function applied to input field, updates state to catch user input
+- handleSubmit function takes addGoal prop from app.js to update state in parent

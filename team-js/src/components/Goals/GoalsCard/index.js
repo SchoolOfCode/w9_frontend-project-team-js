@@ -23,7 +23,7 @@ const GoalCard = ({
             <Goal goal={goal} handleToggle={handleToggle} key={goal.goalid} />
           );
         })}
-        <button className="button-57" onClick={handleFilter} style={{ margin: "25px" }}>
+        <button className="clear-items-btn" onClick={handleFilter} style={{ margin: "25px" }}>
           Clear Completed Items
         </button>
       </div>

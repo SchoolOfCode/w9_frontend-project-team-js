@@ -16,11 +16,40 @@ This is currently the MVP for Backpack, V.1.0, and future releases will aim to i
 
 ## Installation
 
-Clone the repository
+Clone the two repositories (frontend and backend) down to your machine. Open up two terminals and use one to navigate to front end, and one to navigate to the back.
+
+In both, enter the command to install dependancies:
 
 Install with npm
 
+### Frontend
+
 ```bash
-  npm install my-project
-  cd my-project
+cd w9_frontend-project-team-js/team-js
+npm i
 ```
+
+### Backend
+
+```bash
+cd w9_backend-project-team-js
+npm i
+```
+
+Once the necessary nodes have been installed you can spin up the app! First open your backend terminal, and run the dev script:
+
+### Backend
+
+```bash
+npm run dev
+```
+
+and once thats spinning round round baby right round you can open your Frontend terminal and start the react app 😊
+
+### Frontend
+
+```bash
+npm start
+```
+
+Backpack will then start up in your browser, and you should be able to see the data pulled through from the database.

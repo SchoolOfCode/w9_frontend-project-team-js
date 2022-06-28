@@ -70,6 +70,7 @@ The Goals component is straight forward, as it stands just a simple To Do list. 
 
 This functionality is persistent and will update the database accordingly.
 
+
 ---
 
 <br/>
@@ -132,3 +133,20 @@ _behaviour_
 
 - handleChange function applied to input field, updates state to catch user input
 - handleSubmit function takes addGoal prop from app.js to update state in parent
+
+
+### Profile component
+
+The Profile component is a pure component that dynamically displays the authenticated user's details from the database.
+
+_Prop_
+
+* profileDetails
+
+
+_Behaviour_
+
+* The profileDetails prop is handed the 'users' state that contains the user details. The users state will be set through a fetch request to the databse.
+The object is then accessed in the Profile component and appended to the relevant tags.
+
+

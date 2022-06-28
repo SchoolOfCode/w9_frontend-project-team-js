@@ -53,3 +53,19 @@ npm start
 ```
 
 Backpack will then start up in your browser, and you should be able to see the data pulled through from the database.
+
+## Example
+
+![image](./images/skill.JPG)
+
+This is the default component currently displayed when you start the app. As you will see the data is pulled through from the database. Each skill has its own card, with an accompanying star rating. This is for the users to self-evaluate their abilities.
+
+Users can enter new skills in the Skills Input field above. This will update the database when the button is clicked.
+
+To navigate to the Goals component, the user clicks the Toggle Me button at the top.
+
+![image](./images/goals.JPG)
+
+The Goals component is straight forward, as it stands just a simple To Do list. There is functionality for the user to strike through completed goals by clicking them. When the time comes, they can then remove all striked goalsd by clicking the Clear button at the bottom.
+
+This functionality is persistent and will update the database accordingly.

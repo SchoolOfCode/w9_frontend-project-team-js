@@ -1,22 +1,71 @@
-# National Bootcamp - Week Nine Project Brief
+# Backpack - from Team.js
 
-For your project, you’ll be using what you’ve learned on the course so far to try and improve the lives of your users. In this case, the users will be close to home: bootcampers!
+## Introduction
 
-To do this, you’ll need to take the time to understand your user (a bootcamper), their experiences, and their problems. Specifically, it might be good to focus on how to enhance the remote experience of a bootcamper, or what can help them with the vast amount of learning there is to do as a new developer. What do they need? What problem might they have that your application could solve for them? How can you get into the mindset of your user and keep them at the centre of your problem-solving?
+Backpack is an app that aims to support students learning to code - or learning any skill for that matter!
 
-The high level outcomes from this project should be:
+The general premise of the app is to help students to keep track of their development, by breaking down the topics into individual skills, as well as tools to assist in improving those skills.
 
-- A minimum viable product (MVP) showcasing an innovative full stack application which meets the user need you’ve identified
-- A presentation, complete with how you worked as a team and a demonstration of the project
+This is currently the MVP for Backpack, V.1.0, and future releases will aim to include functionality such as:
 
-Your project application might include the following:
+- connecting with friends
+- mental health support
+- flashcard revision
+- resource library
+- user login and authentication
 
-- Include a user experience created in React
-- Build a REST API which is used by your front-end
-- Be supported by a Postgresql database with multiple tables
-- Be built and managed in an agile way
-- Utilise testing for ensuring robust code
+## Installation
 
-Remember, you only have a few days to code a solution, so being agile is key. That means brainstorming what you want to build, and working in sprints to deliver value each time. After each sprint, you can reassess and either continue on course or iterate towards a better solution. Have a plan which is incremental steps, rather than all or nothing.
+Clone the two repositories (frontend and backend) down to your machine. Open up two terminals and use one to navigate to front end, and one to navigate to the back.
 
-Click the link to see the [Project Guidelines](https://github.com/SchoolOfCode/project-guidelines/blob/master/project-week.md)
+In both, enter the command to install dependancies:
+
+Install with npm
+
+### Frontend
+
+```bash
+cd w9_frontend-project-team-js/team-js
+npm i
+```
+
+### Backend
+
+```bash
+cd w9_backend-project-team-js
+npm i
+```
+
+Once the necessary nodes have been installed you can spin up the app! First open your backend terminal, and run the dev script:
+
+### Backend
+
+```bash
+npm run dev
+```
+
+and once thats spinning round round baby right round you can open your Frontend terminal and start the react app 😊
+
+### Frontend
+
+```bash
+npm start
+```
+
+Backpack will then start up in your browser, and you should be able to see the data pulled through from the database.
+
+## Example
+
+![image](./images/skill.JPG)
+
+This is the default component currently displayed when you start the app. As you will see the data is pulled through from the database. Each skill has its own card, with an accompanying star rating. This is for the users to self-evaluate their abilities.
+
+Users can enter new skills in the Skills Input field above. This will update the database when the button is clicked.
+
+To navigate to the Goals component, the user clicks the Toggle Me button at the top.
+
+![image](./images/goals.JPG)
+
+The Goals component is straight forward, as it stands just a simple To Do list. There is functionality for the user to strike through completed goals by clicking them. When the time comes, they can then remove all striked goalsd by clicking the Clear button at the bottom.
+
+This functionality is persistent and will update the database accordingly.

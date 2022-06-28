@@ -188,15 +188,6 @@ function App() {
     await postNewSkill(newSkill);
   }
 
-  function addSkill(userInput) {
-    let copy = [...skills.payload];
-    copy = [
-      ...copy,
-      { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
-    ];
-    setSkills({ success: true, payload: copy });
-  }
-
   // End of Users and Skills
 
   // End of Users and Skills

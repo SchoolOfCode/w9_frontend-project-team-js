@@ -8,14 +8,25 @@ import "./App.css";
 const toggle = { showGoal: false, showSkills: true };
 
 function App() {
+  // State management
+
+  // State for current page
   const [show, setShow] = useState(toggle);
-  // Start of Goals
+
+  // State used to allow hover over stars
   const [hover, setHover] = useState();
 
+  // State used to track goals
   const [goalList, setGoalList] = useState([]);
+
+  // We included this in order to rerender the page
+  // while avoiding infinite loop
   const [copyGoalList, setCopyGoalList] = useState([]);
 
-  // Put request handler
+  // Database (db) functions
+
+  // Put request handler for goals
+  // Added here to update db from main app
   async function updateGoal(goal) {
     const updateId = goal.goalid;
     const url = "/goals/" + updateId;
@@ -33,7 +44,8 @@ function App() {
     });
   }
 
-  // Toggle function to allow strike through of completed tasks
+  // Toggle function to allow strike through
+  // of completed tasks
   const handleToggle = (id) => {
     let mapped = goalList.map((goal) => {
       if (goal.goalid === Number(id)) {
@@ -47,7 +59,7 @@ function App() {
   };
 
   // DELETE Request for completed items
-
+  // so that clearing deleted items updates db
   async function deleteCompletedGoals(goals) {
     for (let i = 0; i < goals.length; i++) {
       const updateId = goals[i].goalid;
@@ -58,7 +70,8 @@ function App() {
     }
   }
 
-  // Handle Filter Function used for delete button on each ToDo
+  // Handle Filter Function used for delete button
+  // on each ToDo
   const handleFilter = () => {
     let filtered = goalList.filter((goal) => {
       return !goal.complete;
@@ -72,6 +85,7 @@ function App() {
   };
 
   // Add task function to be called on button click
+  // adds new task to db
 
   async function postNewGoal(goal) {
     const url = "/goals";
@@ -90,6 +104,8 @@ function App() {
       ]),
     });
   }
+
+  // Start of Goals
 
   const addGoal = async (userInput) => {
     let copy = [...goalList];
@@ -147,6 +163,7 @@ function App() {
       ]),
     });
   }
+
   // this will need to be dynamic because new skills or deleted skills will to render
   // another state and have click event change the state
   useEffect(() => {
@@ -171,9 +188,21 @@ function App() {
     await postNewSkill(newSkill);
   }
 
+  function addSkill(userInput) {
+    let copy = [...skills.payload];
+    copy = [
+      ...copy,
+      { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
+    ];
+    setSkills({ success: true, payload: copy });
+  }
+
   // End of Users and Skills
 
-  // Start of toggle feature
+  // End of Users and Skills
+
+  // useEffects here to render the page
+  // and call latest data from db
 
   useEffect(() => {
     async function fetchUserData() {
@@ -193,17 +222,6 @@ function App() {
     fetchSkillsData();
   }, []);
 
-  function addSkill(userInput) {
-    let copy = [...skills.payload];
-    copy = [
-      ...copy,
-      { skillsId: copy.length + 1, title: userInput, star: 0, notes: "" },
-    ];
-    setSkills({ success: true, payload: copy });
-  }
-
-  // End of Users and Skills
-
   // Start of toggle feature
 
   function toggleClick() {
@@ -215,6 +233,7 @@ function App() {
     setShow(copy);
   }
 
+  // Render of page
   if (!user || !skills) {
     return <div>Server Pending</div>;
   } else {

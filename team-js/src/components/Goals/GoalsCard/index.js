@@ -10,8 +10,6 @@ const GoalCard = ({
   addGoal,
   buttonText,
 }) => {
-  // console.log(`im logging over here`);
-  // console.log(goallist);
   return (
     <div className="skills-containers">
       <div className="goal-input">
@@ -23,7 +21,11 @@ const GoalCard = ({
             <Goal goal={goal} handleToggle={handleToggle} key={goal.goalid} />
           );
         })}
-        <button className="clear-items-btn" onClick={handleFilter} style={{ margin: "25px" }}>
+        <button
+          className="clear-items-btn"
+          onClick={handleFilter}
+          style={{ margin: "25px" }}
+        >
           Clear Completed Items
         </button>
       </div>

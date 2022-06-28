@@ -5,7 +5,6 @@ import Header from "../Header";
 import GoalCard from "../Goals/GoalsCard";
 import "./App.css";
 
-
 const toggle = { showGoal: false, showSkills: true };
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
   async function updateGoal(goal) {
     const updateId = goal.goalid;
     const url = "/goals/" + updateId;
-    console.log(goal);
     await fetch(url, {
       method: "PUT",
       headers: {
@@ -38,7 +36,6 @@ function App() {
   // Toggle function to allow strike through of completed tasks
   const handleToggle = (id) => {
     let mapped = goalList.map((goal) => {
-      console.log(id);
       if (goal.goalid === Number(id)) {
         updateGoal(goal);
         return { ...goal, complete: !goal.complete };
@@ -70,7 +67,6 @@ function App() {
     let deleted = goalList.filter((goal) => {
       return goal.complete;
     });
-    console.log(deleted);
     deleteCompletedGoals(deleted);
     setGoalList(filtered);
   };
@@ -107,18 +103,15 @@ function App() {
     setGoalList(copy);
     setCopyGoalList(copy);
     await postNewGoal(newGoal);
-    console.log(goalList);
   };
 
   useEffect(() => {
     async function fetchGoalData() {
       const response = await fetch("/goals");
       const data = await response.json();
-      console.log(data.payload);
       setGoalList(data.payload);
     }
     fetchGoalData();
-    console.log("This is the goal data: " + user);
   }, []);
 
   // End of Goals
@@ -135,7 +128,6 @@ function App() {
       setUser(data);
     }
     fetchUserData();
-    console.log("This is the user data: " + user);
   }, []);
 
   async function postNewSkill(skill) {
@@ -164,11 +156,8 @@ function App() {
       setSkills(data);
     }
     fetchSkillsData();
-
-    console.log("This is the skills data: " + skills);
   }, []);
 
-  // console.log(skills);
   async function addSkill(userInput) {
     let copy = [...skills.payload];
     let newSkill = {
@@ -193,7 +182,6 @@ function App() {
       setUser(data);
     }
     fetchUserData();
-    console.log("This is the user data: " + user);
   }, []);
 
   useEffect(() => {
@@ -203,11 +191,8 @@ function App() {
       setSkills(data);
     }
     fetchSkillsData();
-
-    console.log("This is the skills data: " + skills);
   }, []);
 
-  console.log(skills);
   function addSkill(userInput) {
     let copy = [...skills.payload];
     copy = [

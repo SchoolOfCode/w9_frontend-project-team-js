@@ -10,22 +10,20 @@ function Input({ buttonText, addGoal }) {
 
   const handleSubmit = function () {
     // debugger;
-    console.log(`click click mfS`);
     addGoal(userInput);
     setUserInput("");
   };
 
   return (
     <div className="input-add">
-      <input className="goal-input-field"
+      <input
+        className="goal-input-field"
         value={userInput}
         type="text"
         onChange={handleChange}
         placeholder="So what needs done?"
       ></input>
-      <button onClick={handleSubmit}>
-        {buttonText}
-      </button>
+      <button onClick={handleSubmit}>{buttonText}</button>
     </div>
   );
 }

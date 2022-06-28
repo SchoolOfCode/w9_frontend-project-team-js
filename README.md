@@ -71,8 +71,68 @@ The Goals component is straight forward, as it stands just a simple To Do list. 
 This functionality is persistent and will update the database accordingly.
 
 
+---
 
+<br/>
 
+## Components
+
+### Goals
+
+The goals compnent rendered on the main page consists of three smaller components:
+
+- GoalCard
+- GoalItem
+- GoalInput
+
+The GoalItem and GoalInput are both pulled through into the GoalCard, which is then pulled through into app.js.
+
+### GoalCard
+
+_props_
+
+- goallist
+- handleToggle
+- handleFilter
+- addGoal
+- buttonText
+
+_behaviour_
+
+- renders entire goals component within dynamic div
+- renders the GoalInput component, handing in required props
+- maps over goalList array and renders a GoalItem component for each one
+- renders a button for clearing the list, with prop handleFilter applied to onClick, which removes checked items on the list
+
+### GoalItem
+
+_props_
+
+- goal
+- handleToggle
+
+_behaviour_
+
+- takes goal prop and renders a goal based on the details provided
+- assigns key and id to the div
+- displays prop goal.details
+- depending on status of goal.complete, applies strike class or not
+
+### GoalInput
+
+_state_
+
+- userInput
+
+_props_
+
+- buttonText
+- addGoal
+
+_behaviour_
+
+- handleChange function applied to input field, updates state to catch user input
+- handleSubmit function takes addGoal prop from app.js to update state in parent
 
 
 ### Profile component
@@ -88,4 +148,5 @@ _Behaviour_
 
 * The profileDetails prop is handed the 'users' state that contains the user details. The users state will be set through a fetch request to the databse.
 The object is then accessed in the Profile component and appended to the relevant tags.
+
 

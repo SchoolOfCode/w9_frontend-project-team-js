@@ -69,3 +69,50 @@ To navigate to the Goals component, the user clicks the Toggle Me button at the 
 The Goals component is straight forward, as it stands just a simple To Do list. There is functionality for the user to strike through completed goals by clicking them. When the time comes, they can then remove all striked goalsd by clicking the Clear button at the bottom.
 
 This functionality is persistent and will update the database accordingly.
+
+---
+
+<br/>
+
+## Components
+
+### Goals
+
+The goals compnent rendered on the main page consists of three smaller components:
+
+- GoalCard
+- GoalItem
+- GoalInput
+
+The GoalItem and GoalInput are both pulled through into the GoalCard, which is then pulled through into app.js. These components are all pure and do not handle state within them.
+
+### GoalCard
+
+_props_
+
+- goallist
+- handleToggle
+- handleFilter
+  - addGoal
+  - buttonText
+
+_behaviour_
+
+- renders entire goals component within dynamic div
+- renders the GoalInput component, handing in required props
+- maps over goalList array and renders a GoalItem component for each one
+- renders a button for clearing the list, with prop handleFilter applied to onClick, which removes checked items on the list
+
+### GoalItem
+
+_props_
+
+- goal
+- handleToggle
+
+_behaviour_
+
+- takes goal prop and renders a goal based on the details provided
+- assigns key and id to the div
+- displays prop goal.details
+- depending on status of goal.complete, applies strike class or not

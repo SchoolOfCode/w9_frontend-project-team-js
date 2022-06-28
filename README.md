@@ -69,3 +69,23 @@ To navigate to the Goals component, the user clicks the Toggle Me button at the 
 The Goals component is straight forward, as it stands just a simple To Do list. There is functionality for the user to strike through completed goals by clicking them. When the time comes, they can then remove all striked goalsd by clicking the Clear button at the bottom.
 
 This functionality is persistent and will update the database accordingly.
+
+
+
+
+
+
+### Profile component
+
+The Profile component is a pure component that dynamically displays the authenticated user's details from the database.
+
+_Prop_
+
+* profileDetails
+
+
+_Behaviour_
+
+* The profileDetails prop is handed the 'users' state that contains the user details. The users state will be set through a fetch request to the databse.
+The object is then accessed in the Profile component and appended to the relevant tags.
+

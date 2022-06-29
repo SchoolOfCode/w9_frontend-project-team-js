@@ -14,6 +14,10 @@ This is currently the MVP for Backpack, V.1.0, and future releases will aim to i
 - resource library
 - user login and authentication
 
+---
+
+<br />
+
 ## Installation
 
 Clone the two repositories (frontend and backend) down to your machine. Open up two terminals and use one to navigate to front end, and one to navigate to the back.
@@ -54,6 +58,10 @@ npm start
 
 Backpack will then start up in your browser, and you should be able to see the data pulled through from the database.
 
+---
+
+<br />
+
 ## Example
 
 ![image](./images/skill.JPG)
@@ -72,6 +80,18 @@ This functionality is persistent and will update the database accordingly.
 
 ---
 
+<br />
+
+## Tech Stack
+
+**Languages** JavaScript, HTML5, CSS3
+
+**Frameworks and Libraries:** Node, React.js, Jest, Supertest, React Testing Library,
+
+---
+
+<br />
+
 ## Component Tree
 
 - App
@@ -86,66 +106,40 @@ This functionality is persistent and will update the database accordingly.
     - GoalItem
     - GoalInput
 
+---
+
 <br/>
 
 ## Components
 
-### Goals
+### App component
 
-The goals compnent rendered on the main page consists of three smaller components:
+The App component is a smart component that dynamically displays all of our pure components.
 
-- GoalCard
-- GoalItem
-- GoalInput
+_State_
 
-The GoalItem and GoalInput are both pulled through into the GoalCard, which is then pulled through into app.js.
+- show
+- hover
+- goalList
+- copyGoalList
 
-#### GoalCard
+_Behaviour_
 
-_props_
+The App component displays our components by providing various controlled states to our rendered components using the 'useState' Hook.
 
-- goallist
-- handleToggle
-- handleFilter
-- addGoal
-- buttonText
+- The _show_ state is used to set whether the 'Skills' or 'GoalCard' component is displayed in our 'dynamic-container-card' div.
+- The _hover_ state is used to set a state for our star ratings in the skills component.
+- The _goalList_ state is used to track the users goals.
+- The _copyGoalList_ state is used to avoid an inifinite loop when using the useEffect hook. This allows us to track new goal submissions and re-render the GoalCard component accordingly.
 
-_behaviour_
+### Header component
 
-- renders entire goals component within dynamic div
-- renders the GoalInput component, handing in required props
-- maps over goalList array and renders a GoalItem component for each one
-- renders a button for clearing the list, with prop handleFilter applied to onClick, which removes checked items on the list
+The Header component is a pure component that displays the logo, 'backpack' in text format and the Hamburger component for a menu.
+The Header component has a nested, imported 'Menu' component from 'react-burger-menu' from npmjs.
 
-#### GoalItem
+_Behaviour_
 
-_props_
-
-- goal
-- handleToggle
-
-_behaviour_
-
-- takes goal prop and renders a goal based on the details provided
-- assigns key and id to the div
-- displays prop goal.details
-- depending on status of goal.complete, applies strike class or not
-
-#### GoalInput
-
-_state_
-
-- userInput
-
-_props_
-
-- buttonText
-- addGoal
-
-_behaviour_
-
-- handleChange function applied to input field, updates state to catch user input
-- handleSubmit function takes addGoal prop from app.js to update state in parent
+- The Header component displays our Hamburger menu and logo. It uses CSS styling to match our brand appeal. The imported Menu component accepts 'a' tags as links to different parts of the website. This can be updated in the index.js for the Header component. The Menu component also accepts a prop for a custom logo: customBurgerIcon.
 
 ### Profile
 
@@ -231,11 +225,73 @@ _behaviour_
 - Ratings component pulled from react-ratings-declaritive, handles stars
 - details handed as props inserted into the card at appropriate points
 
-### Header component
+### Goals
 
-The Header component is a pure component that displays the logo, 'backpack' in text format and the Hamburger component for a menu.
-The Header component has a nested, imported 'Menu' component from 'react-burger-menu' from npmjs.
+The goals compnent rendered on the main page consists of three smaller components:
 
-_Behaviour_
+- GoalCard
+- GoalItem
+- GoalInput
 
-- The Header component displays our Hamburger menu and logo. It uses CSS styling to match our brand appeal. The imported Menu component accepts 'a' tags as links to different parts of the website. This can be updated in the index.js for the Header component. The Menu component also accepts a prop for a custom logo: customBurgerIcon.
+The GoalItem and GoalInput are both pulled through into the GoalCard, which is then pulled through into app.js.
+
+#### GoalCard
+
+_props_
+
+- goallist
+- handleToggle
+- handleFilter
+- addGoal
+- buttonText
+
+_behaviour_
+
+- renders entire goals component within dynamic div
+- renders the GoalInput component, handing in required props
+- maps over goalList array and renders a GoalItem component for each one
+- renders a button for clearing the list, with prop handleFilter applied to onClick, which removes checked items on the list
+
+#### GoalItem
+
+_props_
+
+- goal
+- handleToggle
+
+_behaviour_
+
+- takes goal prop and renders a goal based on the details provided
+- assigns key and id to the div
+- displays prop goal.details
+- depending on status of goal.complete, applies strike class or not
+
+#### GoalInput
+
+_state_
+
+- userInput
+
+_props_
+
+- buttonText
+- addGoal
+
+_behaviour_
+
+- handleChange function applied to input field, updates state to catch user input
+- handleSubmit function takes addGoal prop from app.js to update state in parent
+
+---
+
+<br />
+
+## Authors
+
+- [@Steven Cheung](https://github.com/StevenCK1)
+
+- [@Claudia Gonzalez-Casales](https://github.com/ClaudiaGC1339)
+
+- [@Adam Phasey](https://github.com/AdamPhasey)
+
+- [@Skandog](https://github.com/skandog)

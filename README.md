@@ -158,3 +158,25 @@ The Header component has a nested, imported 'Menu' component from 'react-burger-
 _Behaviour_
 
 * The Header component displays our Hamburger menu and logo. It uses CSS styling to match our brand appeal. The imported Menu component accepts 'a' tags as links to different parts of the website. This can be updated in the index.js for the Header component. The Menu component also accepts a prop for a custom logo: customBurgerIcon.
+
+
+
+### App component
+
+The App component is a smart component that dynamically displays all of our pure components.
+
+_State_
+
+* show
+* hover
+* goalList
+* copyGoalList
+
+
+_Behaviour_
+
+* The App component displays our components by providing various controlled states to our rendered components using the 'useState' Hook.
+The _show_ state is used to set whether the 'Skills' or 'GoalCard' component is displayed in our 'dynamic-container-card' div.
+The _hover_ state is used to set a state for our star ratings in the skills component.
+The _goalList_ state is used to track the users goals.
+The _copyGoalList_ state is used to avoid an inifinite loop when using the useEffect hook. This allows us to track new goal submissions and re-render the GoalCard component accordingly.

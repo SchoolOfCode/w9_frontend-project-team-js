@@ -282,9 +282,9 @@ _behaviour_
 - handleChange function applied to input field, updates state to catch user input
 - handleSubmit function takes addGoal prop from app.js to update state in parent
 
----
-
 <br />
+
+---
 
 ## Authors
 

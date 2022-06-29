@@ -1,6 +1,7 @@
-# Backpack - from Team.js
+# Frontend for Backpack App (W9 Project)
 
-## Introduction
+
+## Description
 
 Backpack is an app that aims to support students learning to code - or learning any skill for that matter!
 

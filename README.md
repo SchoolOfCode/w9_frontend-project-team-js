@@ -1,4 +1,4 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](vscode://https://github.com/SchoolOfCode/w9_frontend-project-team-js.git)
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](vscode://github.com/SchoolOfCode/w9_frontend-project-team-js.git)
 
 # Frontend for Backpack App (W9 Project)
 

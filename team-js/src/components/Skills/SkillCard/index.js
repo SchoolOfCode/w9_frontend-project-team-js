@@ -5,7 +5,12 @@ function SkillCard({ id, title, starRating, callChangeRating, notes }) {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
 
   return (
-    <div className="Skill-card" id={id} {...getToggleProps()}>
+    <div
+      aria-label="skill-card1"
+      className="Skill-card"
+      id={id}
+      {...getToggleProps()}
+    >
       <label>{title}</label>
       <p {...getCollapseProps()}>{notes}</p>
       <div className="star-container">
@@ -15,11 +20,26 @@ function SkillCard({ id, title, starRating, callChangeRating, notes }) {
           widgetSpacings="0vw"
           changeRating={callChangeRating}
         >
-          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
-          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
-          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
-          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
-          <Ratings.Widget widgetRatedColor='#FFCB47' widgetHoverColor='#FFCB47' />
+          <Ratings.Widget
+            widgetRatedColor="#FFCB47"
+            widgetHoverColor="#FFCB47"
+          />
+          <Ratings.Widget
+            widgetRatedColor="#FFCB47"
+            widgetHoverColor="#FFCB47"
+          />
+          <Ratings.Widget
+            widgetRatedColor="#FFCB47"
+            widgetHoverColor="#FFCB47"
+          />
+          <Ratings.Widget
+            widgetRatedColor="#FFCB47"
+            widgetHoverColor="#FFCB47"
+          />
+          <Ratings.Widget
+            widgetRatedColor="#FFCB47"
+            widgetHoverColor="#FFCB47"
+          />
         </Ratings>
       </div>
     </div>

@@ -70,7 +70,6 @@ The Goals component is straight forward, as it stands just a simple To Do list. 
 
 This functionality is persistent and will update the database accordingly.
 
-
 ---
 
 <br/>
@@ -87,7 +86,7 @@ The goals compnent rendered on the main page consists of three smaller component
 
 The GoalItem and GoalInput are both pulled through into the GoalCard, which is then pulled through into app.js.
 
-### GoalCard
+#### GoalCard
 
 _props_
 
@@ -104,7 +103,7 @@ _behaviour_
 - maps over goalList array and renders a GoalItem component for each one
 - renders a button for clearing the list, with prop handleFilter applied to onClick, which removes checked items on the list
 
-### GoalItem
+#### GoalItem
 
 _props_
 
@@ -118,7 +117,7 @@ _behaviour_
 - displays prop goal.details
 - depending on status of goal.complete, applies strike class or not
 
-### GoalInput
+#### GoalInput
 
 _state_
 
@@ -134,20 +133,89 @@ _behaviour_
 - handleChange function applied to input field, updates state to catch user input
 - handleSubmit function takes addGoal prop from app.js to update state in parent
 
-
-### Profile component
+### Profile
 
 The Profile component is a pure component that dynamically displays the authenticated user's details from the database.
 
 _Prop_
 
-* profileDetails
-
+- profileDetails
 
 _Behaviour_
 
-* The profileDetails prop is handed the 'users' state that contains the user details. The users state will be set through a fetch request to the databse.
-The object is then accessed in the Profile component and appended to the relevant tags.
+- The profileDetails prop is handed the 'users' state that contains the user details. The users state will be set through a fetch request to the databse.
+  The object is then accessed in the Profile component and appended to the relevant tags.
+
+### Skills
+
+The skills compnent rendered on the main page pulls through three smaller components:
+
+- SkillInput
+- DisplaySkills
+  - SkillCard
+
+_props_
+
+- buttonText
+- addSkill
+- skillsList
+- callStarFunction
+
+_behaviour_
+
+- The SkillCard is pulled into DisplaySkills are both DisplaySKills and SkillInput are brought through into the Skill component, which is then pulled through into App.js.
+
+#### SkillInput
+
+_state_
+
+- userInput
+
+_props_
+
+- buttonText
+- addSkill
+
+_behaviour_
+
+- userInput captures the change in the input field
+- handleSubmit function calls addSkill function prop to update state in parent component
+
+#### DisplaySkill
+
+_state_
+
+- maxCards
+
+_props_
+
+- callStarFunction
+- arr
+
+_behaviour_
+
+- Component takes in the skillslist as an array and reverses it in order to display most recently entered skills first
+- A ternary checks whether the the show more button has been checked, to reveal more than the defaul four skills
+- the skills array is then mapped across and a SkillCard is rendered for each one
+
+#### SkillCard
+
+_state_
+
+- getCollapseProps
+
+_props_
+
+- id
+- title
+- starRating
+- callChangeRating
+- notes
+
+_behaviour_
+
+- Ratings component pulled from react-ratings-declaritive, handles stars
+- details handed as props inserted into the card at appropriate points
 
 
 ### Header component

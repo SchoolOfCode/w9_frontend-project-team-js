@@ -150,3 +150,11 @@ _Behaviour_
 The object is then accessed in the Profile component and appended to the relevant tags.
 
 
+### Header component
+
+The Header component is a pure component that displays the logo, 'backpack' in text format and the Hamburger component for a menu.
+The Header component has a nested, imported 'Menu' component from 'react-burger-menu' from npmjs.
+
+_Behaviour_
+
+* The Header component displays our Hamburger menu and logo. It uses CSS styling to match our brand appeal. The imported Menu component accepts 'a' tags as links to different parts of the website. This can be updated in the index.js for the Header component. The Menu component also accepts a prop for a custom logo: customBurgerIcon.

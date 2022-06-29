@@ -14,9 +14,9 @@ This is currently the MVP for Backpack, V.1.0, and future releases will aim to i
 - resource library
 - user login and authentication
 
----
-
 <br />
+
+---
 
 ## Installation
 
@@ -58,9 +58,9 @@ npm start
 
 Backpack will then start up in your browser, and you should be able to see the data pulled through from the database.
 
----
-
 <br />
+
+---
 
 ## Example
 
@@ -78,9 +78,9 @@ The Goals component is straight forward, as it stands just a simple To Do list. 
 
 This functionality is persistent and will update the database accordingly.
 
----
-
 <br />
+
+---
 
 ## Tech Stack
 
@@ -88,9 +88,9 @@ This functionality is persistent and will update the database accordingly.
 
 **Frameworks and Libraries:** Node, React.js, Jest, Supertest, React Testing Library,
 
----
-
 <br />
+
+---
 
 ## Component Tree
 
@@ -106,9 +106,9 @@ This functionality is persistent and will update the database accordingly.
     - GoalItem
     - GoalInput
 
----
-
 <br/>
+
+---
 
 ## Components
 

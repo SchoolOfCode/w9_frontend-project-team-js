@@ -6,7 +6,7 @@ function DisplaySkills({ arr, callStarFunction }) {
   const [maxCards, setMaxCards] = useState(false);
   let reverse = [].concat(arr.payload).reverse();
   return (
-    <div>
+    <div >
       {!maxCards
         ? reverse
             .slice(0, 4)

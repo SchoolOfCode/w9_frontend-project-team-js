@@ -14,6 +14,10 @@ This is currently the MVP for Backpack, V.1.0, and future releases will aim to i
 - resource library
 - user login and authentication
 
+---
+
+<br />
+
 ## Installation
 
 Clone the two repositories (frontend and backend) down to your machine. Open up two terminals and use one to navigate to front end, and one to navigate to the back.
@@ -54,6 +58,10 @@ npm start
 
 Backpack will then start up in your browser, and you should be able to see the data pulled through from the database.
 
+---
+
+<br />
+
 ## Example
 
 ![image](./images/skill.JPG)
@@ -72,9 +80,150 @@ This functionality is persistent and will update the database accordingly.
 
 ---
 
+<br />
+
+## Tech Stack
+
+**Languages** JavaScript, HTML5, CSS3
+
+**Frameworks and Libraries:** Node, React.js, Jest, Supertest, React Testing Library,
+
+---
+
+<br />
+
+## Component Tree
+
+- App
+  - Header
+    - Hamburger
+  - Profile
+  - Skills
+    - SkillInput
+    - DisplaySkills
+      - SkillCard
+  - GoalCard
+    - GoalItem
+    - GoalInput
+
+---
+
 <br/>
 
 ## Components
+
+### App component
+
+The App component is a smart component that dynamically displays all of our pure components.
+
+_State_
+
+- show
+- hover
+- goalList
+- copyGoalList
+
+_Behaviour_
+
+The App component displays our components by providing various controlled states to our rendered components using the 'useState' Hook.
+
+- The _show_ state is used to set whether the 'Skills' or 'GoalCard' component is displayed in our 'dynamic-container-card' div.
+- The _hover_ state is used to set a state for our star ratings in the skills component.
+- The _goalList_ state is used to track the users goals.
+- The _copyGoalList_ state is used to avoid an inifinite loop when using the useEffect hook. This allows us to track new goal submissions and re-render the GoalCard component accordingly.
+
+### Header component
+
+The Header component is a pure component that displays the logo, 'backpack' in text format and the Hamburger component for a menu.
+The Header component has a nested, imported 'Menu' component from 'react-burger-menu' from npmjs.
+
+_Behaviour_
+
+- The Header component displays our Hamburger menu and logo. It uses CSS styling to match our brand appeal. The imported Menu component accepts 'a' tags as links to different parts of the website. This can be updated in the index.js for the Header component. The Menu component also accepts a prop for a custom logo: customBurgerIcon.
+
+### Profile
+
+The Profile component is a pure component that dynamically displays the authenticated user's details from the database.
+
+_Prop_
+
+- profileDetails
+
+_Behaviour_
+
+- The profileDetails prop is handed the 'users' state that contains the user details. The users state will be set through a fetch request to the databse.
+  The object is then accessed in the Profile component and appended to the relevant tags.
+
+### Skills
+
+The skills compnent rendered on the main page pulls through three smaller components:
+
+- SkillInput
+- DisplaySkills
+  - SkillCard
+
+_props_
+
+- buttonText
+- addSkill
+- skillsList
+- callStarFunction
+
+_behaviour_
+
+- The SkillCard is pulled into DisplaySkills are both DisplaySKills and SkillInput are brought through into the Skill component, which is then pulled through into App.js.
+
+#### SkillInput
+
+_state_
+
+- userInput
+
+_props_
+
+- buttonText
+- addSkill
+
+_behaviour_
+
+- _userInput_ captures the change in the input field
+- handleSubmit function calls addSkill function prop to update state in parent component
+
+#### DisplaySkill
+
+_state_
+
+- maxCards
+
+_props_
+
+- callStarFunction
+- arr
+
+_behaviour_
+
+- Component takes in the skillslist as an array and reverses it in order to display most recently entered skills first
+- A ternary checks whether the the show more button has been checked, to reveal more than the defaul four skills
+- the skills array is then mapped across and a SkillCard is rendered for each one
+
+#### SkillCard
+
+_state_
+
+- getCollapseProps
+
+_props_
+
+- id
+- title
+- starRating
+- callChangeRating
+- notes
+
+_behaviour_
+
+- Ratings component pulled from react-ratings-declaritive, handles stars
+- details handed as props inserted into the card at appropriate points
 
 ### Goals
 
@@ -133,118 +282,16 @@ _behaviour_
 - handleChange function applied to input field, updates state to catch user input
 - handleSubmit function takes addGoal prop from app.js to update state in parent
 
-### Profile
+---
 
-The Profile component is a pure component that dynamically displays the authenticated user's details from the database.
+<br />
 
-_Prop_
+## Authors
 
-- profileDetails
+- [@Steven Cheung](https://github.com/StevenCK1)
 
-_Behaviour_
+- [@Claudia Gonzalez-Casales](https://github.com/ClaudiaGC1339)
 
-- The profileDetails prop is handed the 'users' state that contains the user details. The users state will be set through a fetch request to the databse.
-  The object is then accessed in the Profile component and appended to the relevant tags.
+- [@Adam Phasey](https://github.com/AdamPhasey)
 
-### Skills
-
-The skills compnent rendered on the main page pulls through three smaller components:
-
-- SkillInput
-- DisplaySkills
-  - SkillCard
-
-_props_
-
-- buttonText
-- addSkill
-- skillsList
-- callStarFunction
-
-_behaviour_
-
-- The SkillCard is pulled into DisplaySkills are both DisplaySKills and SkillInput are brought through into the Skill component, which is then pulled through into App.js.
-
-#### SkillInput
-
-_state_
-
-- userInput
-
-_props_
-
-- buttonText
-- addSkill
-
-_behaviour_
-
-- userInput captures the change in the input field
-- handleSubmit function calls addSkill function prop to update state in parent component
-
-#### DisplaySkill
-
-_state_
-
-- maxCards
-
-_props_
-
-- callStarFunction
-- arr
-
-_behaviour_
-
-- Component takes in the skillslist as an array and reverses it in order to display most recently entered skills first
-- A ternary checks whether the the show more button has been checked, to reveal more than the defaul four skills
-- the skills array is then mapped across and a SkillCard is rendered for each one
-
-#### SkillCard
-
-_state_
-
-- getCollapseProps
-
-_props_
-
-- id
-- title
-- starRating
-- callChangeRating
-- notes
-
-_behaviour_
-
-- Ratings component pulled from react-ratings-declaritive, handles stars
-- details handed as props inserted into the card at appropriate points
-
-
-### Header component
-
-The Header component is a pure component that displays the logo, 'backpack' in text format and the Hamburger component for a menu.
-The Header component has a nested, imported 'Menu' component from 'react-burger-menu' from npmjs.
-
-_Behaviour_
-
-* The Header component displays our Hamburger menu and logo. It uses CSS styling to match our brand appeal. The imported Menu component accepts 'a' tags as links to different parts of the website. This can be updated in the index.js for the Header component. The Menu component also accepts a prop for a custom logo: customBurgerIcon.
-
-
-
-### App component
-
-The App component is a smart component that dynamically displays all of our pure components.
-
-_State_
-
-* show
-* hover
-* goalList
-* copyGoalList
-
-
-_Behaviour_
-
-The App component displays our components by providing various controlled states to our rendered components using the 'useState' Hook.
-* The _show_ state is used to set whether the 'Skills' or 'GoalCard' component is displayed in our 'dynamic-container-card' div.
-* The _hover_ state is used to set a state for our star ratings in the skills component.
-* The _goalList_ state is used to track the users goals.
-* The _copyGoalList_ state is used to avoid an inifinite loop when using the useEffect hook. This allows us to track new goal submissions and re-render the GoalCard component accordingly.
+- [@Skandog](https://github.com/skandog)

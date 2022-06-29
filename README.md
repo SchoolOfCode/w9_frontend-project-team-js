@@ -175,8 +175,8 @@ _State_
 
 _Behaviour_
 
-* The App component displays our components by providing various controlled states to our rendered components using the 'useState' Hook.
-The _show_ state is used to set whether the 'Skills' or 'GoalCard' component is displayed in our 'dynamic-container-card' div.
-The _hover_ state is used to set a state for our star ratings in the skills component.
-The _goalList_ state is used to track the users goals.
-The _copyGoalList_ state is used to avoid an inifinite loop when using the useEffect hook. This allows us to track new goal submissions and re-render the GoalCard component accordingly.
+The App component displays our components by providing various controlled states to our rendered components using the 'useState' Hook.
+* The _show_ state is used to set whether the 'Skills' or 'GoalCard' component is displayed in our 'dynamic-container-card' div.
+* The _hover_ state is used to set a state for our star ratings in the skills component.
+* The _goalList_ state is used to track the users goals.
+* The _copyGoalList_ state is used to avoid an inifinite loop when using the useEffect hook. This allows us to track new goal submissions and re-render the GoalCard component accordingly.

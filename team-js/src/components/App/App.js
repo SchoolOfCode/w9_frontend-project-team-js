@@ -88,7 +88,7 @@ function App() {
   // adds new task to db
 
   async function postNewGoal(goal) {
-    const url = "https://backpack-backend-js.herokuapp.com//goals";
+    const url = "https://backpack-backend-js.herokuapp.com/goals";
     await fetch(url, {
       method: "POST",
       headers: {
@@ -123,7 +123,7 @@ function App() {
 
   useEffect(() => {
     async function fetchGoalData() {
-      const response = await fetch("https://backpack-backend-js.herokuapp.com//goals");
+      const response = await fetch("https://backpack-backend-js.herokuapp.com/goals");
       const data = await response.json();
       setGoalList(data.payload);
     }
@@ -139,7 +139,7 @@ function App() {
 
   useEffect(() => {
     async function fetchUserData() {
-      const response = await fetch("https://backpack-backend-js.herokuapp.com//user");
+      const response = await fetch("https://backpack-backend-js.herokuapp.com/user");
       const data = await response.json();
       setUser(data);
     }
@@ -147,7 +147,7 @@ function App() {
   }, []);
 
   async function postNewSkill(skill) {
-    const url = "https://backpack-backend-js.herokuapp.com//skills";
+    const url = "https://backpack-backend-js.herokuapp.com/skills";
     await fetch(url, {
       method: "POST",
       headers: {
@@ -168,7 +168,7 @@ function App() {
   // another state and have click event change the state
   useEffect(() => {
     async function fetchSkillsData() {
-      const response = await fetch("https://backpack-backend-js.herokuapp.com//skills");
+      const response = await fetch("https://backpack-backend-js.herokuapp.com/skills");
       const data = await response.json();
       setSkills(data);
     }
@@ -197,7 +197,7 @@ function App() {
 
   useEffect(() => {
     async function fetchUserData() {
-      const response = await fetch("https://backpack-backend-js.herokuapp.com//user");
+      const response = await fetch("https://backpack-backend-js.herokuapp.com/user");
       const data = await response.json();
       setUser(data);
     }
@@ -206,7 +206,7 @@ function App() {
 
   useEffect(() => {
     async function fetchSkillsData() {
-      const response = await fetch("https://backpack-backend-js.herokuapp.com//skills");
+      const response = await fetch("https://backpack-backend-js.herokuapp.com/skills");
       const data = await response.json();
       setSkills(data);
     }
